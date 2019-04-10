@@ -34,6 +34,17 @@ class User(UserMixin, Base):
         self.password=form.data['password']
         return self
 
+    def change_info(self,form):
+
+        with db.auto_commit():
+            self.name=form.data['name']
+            self.phone_number=form.data['phone_number']
+            self.id_card=form.data['id_card']
+            self.password=form.data['password']
+            return True
+
+
+
 
     @property
     def password(self):
