@@ -6,7 +6,9 @@
 
 from datetime import datetime
 from contextlib import contextmanager
-from sqlalchemy import Column, Integer, SmallInteger
+
+from flask_login import UserMixin
+from sqlalchemy import Column, Integer, SmallInteger, String
 from flask import current_app
 from flask_sqlalchemy import SQLAlchemy as _SQLAlchemy, BaseQuery
 
@@ -37,15 +39,14 @@ class SQLAlchemy(_SQLAlchemy):
 db = SQLAlchemy()
 
 
-# class BaseMixin(object):
-#     def __getitem__(self, key):
-#         return getattr(self, key)
+class BaseMixin(object):
+    def __getitem__(self, key):
+        return getattr(self, key)
 
 
 class Base(db.Model):
     __abstract__ = True#作为模板基类，不去创建这个表
     create_time = Column('create_time', Integer)
-    status = Column(SmallInteger, default=1)
 
     def __init__(self):
         self.create_time = int(datetime.now().timestamp())
@@ -64,3 +65,4 @@ class Base(db.Model):
         for key, value in attrs.items():
             if hasattr(self, key) and key != 'id':
                 setattr(self, key, value)
+

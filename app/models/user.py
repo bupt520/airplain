@@ -11,21 +11,29 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from app.models.base import db, Base
 from sqlalchemy import Column, Integer, String, Boolean, Float
 from flask_login import UserMixin
-from app import login_manager
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
 
 class User(UserMixin, Base):
     __tablename__ = 'user'
-
     id = Column(Integer, primary_key=True)
     nickname = Column(String(24), nullable=False)
     name = Column(String(24), unique=True)
     phone_number = Column(String(18), unique=True)
-    id_card = Column(String, unique=True)
+    id_card = Column(String(24), unique=True)
     # gifts = relationship('Gift')
 
     _password = Column('password', String(128), nullable=False)
+
+    def create_user(self,form):
+
+        self.nickname=form.data['nickname']
+        self.name=form.data['name']
+        self.phone_number=form.data['phone_number']
+        self.id_card=form.data['id_card']
+        self.password=form.data['password']
+        return self
+
 
     @property
     def password(self):
@@ -55,7 +63,7 @@ class User(UserMixin, Base):
     def check_passward(self, raw):
         return check_password_hash(self._password, raw)
 
-
+from app import login_manager
 @login_manager.user_loader
 def get_user(uid):
     return User.query.get(int(uid))

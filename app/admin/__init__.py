@@ -5,18 +5,15 @@
 #-------------------------------------------------------------------------------
 from flask import Blueprint, render_template
 
-# from app.web import user
-__author__ = 'DongZhonghua'
-
 admin = Blueprint('admin', __name__)
 # 下面不加也行
-# from app.web import web
-# from app.web import auth
-# from app.web import drift
-# from app.web import gift
-# from app.web import main
-# from app.web import wish
-# from app.web import user
+# from app.admin import admin
+# from app.admin import auth
+# from app.admin import drift
+# from app.admin import gift
+# from app.admin import main
+# from app.admin import wish
+# from app.admin import user
 
 @admin.app_errorhandler(404)
 def not_found(e):

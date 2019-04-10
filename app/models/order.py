@@ -1,15 +1,16 @@
-# -*- coding: utf-8 -*-#
-# -------------------------------------------------------------------------------
-# Name:         ticket
-# Date:         2019/4/9
-# -------------------------------------------------------------------------------
+# -*- coding: utf-8 -*-
+"""
+    File Name：    order
+    Date：         2019/4/10
+    Description :
+"""
 
 from app.models.base import Base
 from sqlalchemy import Column, Integer, String, Boolean, Float
 
 
-class Ticket(Base):
-    __tablename__ = 'ticket'
+class Order(Base):
+    __tablename__ = 'order'
 
     id = Column(Integer, primary_key=True)
     single_double = Column(String, nullable=False)  # 单或双
@@ -31,4 +32,3 @@ class Ticket(Base):
     third_class_num = Column(Integer, nullable=False)
     depart_ariport = Column(String(24), nullable=False)
     arrive_ariport = Column(String(24), nullable=False)
-    # gifts = relationship('Gift')

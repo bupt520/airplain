@@ -7,13 +7,12 @@
 from flask import Blueprint, render_template
 
 # from app.web import user
-__author__ = 'DongZhonghua'
 
 web = Blueprint('web', __name__)
 # 下面不加也行
 from app.web import main
+from app.web import auth
 # from app.web import web
-# from app.web import auth
 # from app.web import drift
 # from app.web import gift
 # from app.web import wish

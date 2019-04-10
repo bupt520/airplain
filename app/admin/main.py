@@ -6,13 +6,13 @@
 from flask import render_template
 
 
-from . import web
+from . import admin
 
-@web.route('/')
+@admin.route('/')
 def index():
-    return render_template('web/index.html')
+    return render_template('admin/index.html')
 
 
-@web.route('/personal')
+@admin.route('/personal')
 def personal_center():
     pass
