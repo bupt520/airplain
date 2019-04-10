@@ -37,7 +37,7 @@ def register():
 def login():
     form = LoginForm(request.form)
     if request.method == 'POST' and form.validate():
-        user = User.query.filter_by(email=form.email.data).first()
+        user = User.query.filter_by(nickname=form.nickname.data).first()
         if user and user.check_passward(form.password.data):
             login_user(user, remember=True)
             next = request.args.get('next')
@@ -46,7 +46,8 @@ def login():
             return redirect(next)
         else:
             flash('账号不存在或密码错误')
-    return render_template('auth/login.html', form=form)
+    return '用户已经登录'
+    # return render_template('auth/login.html', form=form)
 
 
 @web.route('/reset/password', methods=['GET', 'POST'])

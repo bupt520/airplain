@@ -13,7 +13,7 @@ from app.models.user import User
 
 
 class LoginForm(Form):
-    nickname = StringField('用户名', validators=DataRequired())
+    nickname = StringField('用户名', validators=[DataRequired()])
     password = PasswordField('密码', validators=[
         DataRequired(message='密码不可以为空，请输入你的密码')])
 
