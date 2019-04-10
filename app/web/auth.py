@@ -11,10 +11,7 @@ from app.models.user import User, get_user
 from . import web
 from flask import render_template, request, redirect, url_for, flash
 from app.models.base import db
-from flask_login import login_user, logout_user,current_user
-
-__author__ = '七月'
-
+from flask_login import login_user, logout_user, current_user
 
 
 @web.route('/register', methods=['GET', 'POST'])
@@ -28,7 +25,7 @@ def register():
             # user=user.create_user(form)
             db.session.add(user)
             return 'True'
-    return('False')
+    return ('False')
     #     return redirect(url_for('web.login'))
     # return render_template('auth/register.html', form=form)
 
@@ -48,12 +45,29 @@ def login():
             flash('账号不存在或密码错误')
     return '用户已经登录'
     # return render_template('auth/login.html', form=form)
+
+
 @web.route('/personalInfo', methods=['GET', 'POST'])
 def personal_info():
+    form = ChangeInfoForm(request.form)
+    # 添加默认信息
+    # def register(email=None, password=None):
+    #     form = RegisterForm()
+    #     form.email.default = email
+    #     form.password.default = password
+    #     form.process()
+    #     ...
+    #     return render_template('auth/register.html', form=form)
     userid = current_user.id
     user = get_user(userid)
+    form.nickname.default = user.nickname
+    form.password.default = user.password
+    form.name.default = user.name
+    form.id_card.default = user.id_card
+    form.phone_number = user.phone_number
+    form.process()
     # user = User.query.filter_by(id=userid).first()
-    return user.nickname
+    return form.phone_number
 
 
 @web.route('/changeInfo', methods=['GET', 'POST'])
@@ -61,11 +75,12 @@ def change_info():
     form = ChangeInfoForm(request.form)
     if request.method == 'POST' and form.validate():
         user = User.query.filter_by(nickname=form.nickname.data).first()
-        changed=user.change_info(form)
+        changed = user.change_info(form)
 
         if changed:
             return '用户信息更改成功'
     return redirect(url_for('web.personal_info'))
+
 
 @web.route('/reset/password', methods=['GET', 'POST'])
 def forget_password_request():
