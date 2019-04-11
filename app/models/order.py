@@ -13,22 +13,27 @@ class Order(Base):
     __tablename__ = 'order'
 
     id = Column(Integer, primary_key=True)
-    single_double = Column(String, nullable=False)  # 单或双
-    name = Column(String(24), unique=True)
-    company_name = Column(String(24), nullable=False)
-    depart = Column(String(24), nullable=False)
-    arrive = Column(String(24), nullable=False)
-    depart_date = Column(String(24), nullable=False)  # time
-    depart_time = Column(String(24), nullable=False)
-    arrive_date = Column(String(24), nullable=False)
-    arrive_time = Column(String(24), nullable=False)
-    return_date = Column(String(24))
-    return_time = Column(String(24))
-    first_class_price = Column(Integer, nullable=False)
-    first_class_num = Column(Integer, nullable=False)
-    second_class_price = Column(Integer, nullable=False)
-    second_class_num = Column(Integer, nullable=False)
-    third_class_price = Column(Integer, nullable=False)
-    third_class_num = Column(Integer, nullable=False)
-    depart_ariport = Column(String(24), nullable=False)
-    arrive_ariport = Column(String(24), nullable=False)
+
+    user = Column(String(24), nullable=False) # 这个要不要定义一下一个外键，用户名
+
+    order_id = Column(Integer, nullable=False)
+    # create_time，调用create_datetime,然后.strftime('%Y-%m-%d %H:%M:%S')
+    ticket_type = Column(String(24), nullable=False)
+    route = Column(String(24), nullable=False)
+    depart_time = Column(String(24), nullable=False) #2012.... 全天
+    status = Column(String(24), nullable=False) # 这个是“处理中”和“完成”。
+
+
+
+# class Company(Base):
+#     __tablename__ = "company"
+#     name = Column(String(20), primary_key=True)
+#     location = Column(String(20))
+
+# class Phone(Base):
+#     __tablename__ = "phone"
+#     id = Column(Integer, primary_key=True)
+#     model = Column(String(32))
+#     price = Column(String(32))
+#     company_name = Column(String(32), ForeignKey("company.name"))
+#     company = relationship("Company", backref="phone_of_company")

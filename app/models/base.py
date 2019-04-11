@@ -46,7 +46,7 @@ class BaseMixin(object):
 
 class Base(db.Model):
     __abstract__ = True#作为模板基类，不去创建这个表
-    create_time = Column('create_time', Integer)
+    create_time = Column('create_time', String)
 
     def __init__(self):
         self.create_time = int(datetime.now().timestamp())
