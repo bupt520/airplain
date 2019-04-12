@@ -16,7 +16,7 @@ from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
 class User(UserMixin, Base):
     __tablename__ = 'user'
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, autoincrement=True, primary_key=True)
     nickname = Column(String(24), nullable=False)
     name = Column(String(24), unique=True)
     phone_number = Column(String(18), unique=True)
@@ -25,26 +25,23 @@ class User(UserMixin, Base):
 
     _password = Column('password', String(128), nullable=False)
 
-    def create_user(self,form):
+    def create_user(self, form):
 
-        self.nickname=form.data['nickname']
-        self.name=form.data['name']
-        self.phone_number=form.data['phone_number']
-        self.id_card=form.data['id_card']
-        self.password=form.data['password']
+        self.nickname = form.data['nickname']
+        self.name = form.data['name']
+        self.phone_number = form.data['phone_number']
+        self.id_card = form.data['id_card']
+        self.password = form.data['password']
         return self
 
-    def change_info(self,form):
+    def change_info(self, form):
 
         with db.auto_commit():
-            self.name=form.data['name']
-            self.phone_number=form.data['phone_number']
-            self.id_card=form.data['id_card']
-            self.password=form.data['password']
+            self.name = form.data['name']
+            self.phone_number = form.data['phone_number']
+            self.id_card = form.data['id_card']
+            self.password = form.data['password']
             return True
-
-
-
 
     @property
     def password(self):
@@ -74,7 +71,10 @@ class User(UserMixin, Base):
     def check_passward(self, raw):
         return check_password_hash(self._password, raw)
 
+
 from app import login_manager
+
+
 @login_manager.user_loader
 def get_user(uid):
     return User.query.get(int(uid))

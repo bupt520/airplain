@@ -15,23 +15,23 @@ class Ticket(Base):
     id = Column(Integer, primary_key=True)
     single_double = Column(String, nullable=False)  # 单或双
     name = Column(String(24), unique=True)
-    company_name = Column(String(24), ForeignKey('Company.company_name'), nullable=False, )
+    company_name = Column(String(24), ForeignKey('Company.company_name'), nullable=False )
     depart = Column(String(24), nullable=False)
     arrive = Column(String(24), nullable=False)
-    depart_date = Column(String(24), nullable=False)  # time
-    depart_time = Column(String(24), nullable=False)
-    arrive_date = Column(String(24), nullable=False)
-    arrive_time = Column(String(24), nullable=False)
+    depart_date = Column(String(24))  # time
+    depart_time = Column(String(24))
+    arrive_date = Column(String(24))
+    arrive_time = Column(String(24))
     return_date = Column(String(24))
     return_time = Column(String(24))
-    first_class_price = Column(Integer, nullable=False)
-    first_class_num = Column(Integer, nullable=False)
-    second_class_price = Column(Integer, nullable=False)
+    first_class_price = Column(Integer)
+    first_class_num = Column(Integer)
+    second_class_price = Column(Integer)
     second_class_num = Column(Integer, nullable=False)
     third_class_price = Column(Integer, nullable=False)
     third_class_num = Column(Integer, nullable=False)
-    depart_ariport = Column(String(24), nullable=False)
-    arrive_ariport = Column(String(24), nullable=False)
+    depart_ariport = Column(String(24))
+    arrive_ariport = Column(String(24))
 
     company = relationship('Company', backref=backref('ticket_of_company'))
 

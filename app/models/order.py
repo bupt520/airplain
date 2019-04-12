@@ -4,9 +4,10 @@
     Date：         2019/4/10
     Description :
 """
+from sqlalchemy.orm import relationship, backref
 
 from app.models.base import Base
-from sqlalchemy import Column, Integer, String, Boolean, Float
+from sqlalchemy import Column, Integer, String, Boolean, Float, ForeignKey
 
 
 class Order(Base):
@@ -14,7 +15,7 @@ class Order(Base):
 
     id = Column(Integer, primary_key=True)
 
-    user = Column(String(24), nullable=False) # 这个要不要定义一下一个外键，用户名
+    user_id = Column(String(24), ForeignKey('User.id'),nullable=False) # 这个要不要定义一下一个外键，用户名
 
     order_id = Column(Integer, nullable=False)
     # create_time，调用create_datetime,然后.strftime('%Y-%m-%d %H:%M:%S')
@@ -23,6 +24,7 @@ class Order(Base):
     depart_time = Column(String(24), nullable=False) #2012.... 全天
     status = Column(String(24), nullable=False) # 这个是“处理中”和“完成”。
 
+    user = relationship('User', backref=backref('user_of_order'))
 
 
 # class Company(Base):
