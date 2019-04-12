@@ -44,12 +44,12 @@ class AddTicketForm(Form):
     first_class_price = IntegerField('头等舱价格')
     second_class_price = IntegerField('经济舱价格')
     third_class_price = IntegerField('商务舱价格')
-    first_class_number = IntegerField('数量', validators=[DataRequired()])
-    second_class_number = IntegerField('数量', validators=[DataRequired()])
-    third_class_number = IntegerField('数量', validators=[DataRequired()])
+    first_class_num = IntegerField('数量', validators=[DataRequired()])
+    second_class_num = IntegerField('数量', validators=[DataRequired()])
+    third_class_num = IntegerField('数量', validators=[DataRequired()])
 
-    depart_ariport = StringField('出发机场')
-    arrive_ariport = StringField('到达机场')
+    depart_airport = StringField('出发机场')
+    arrive_airport = StringField('到达机场')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -65,10 +65,10 @@ class AddAdminForm(Form):
 
 
 class AddCompanyForm(Form):
-    company_id = StringField('英文代号', validators=[DataRequired()])
+    En_name = StringField('英文代号', validators=[DataRequired()])
     company_name = StringField('公司名称', validators=[DataRequired(), Length(2, 10)])
 
 
 class ChangeCompanyForm(Form):
-    company_id = StringField('英文代号')
-    company_name = StringField('公司名称', validators=[DataRequired(), Length(2, 10)])
+    En_name = StringField('英文代号')
+    company_name = StringField('公司名称', validators=[DataRequired()])
