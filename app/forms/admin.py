@@ -7,10 +7,9 @@
 from wtforms import StringField, PasswordField, Form, SelectField, SubmitField, RadioField, DateField, DateTimeField, \
     HiddenField, IntegerField
 from wtforms.validators import Length, Email, ValidationError, EqualTo, Required
-from .base import DataRequired
 
-date_time = [(0, '全天'), (1, '07：00-23:59'), (2, '09：00-23:59'), (3, '11：00-23:59'), (4, '13：00-23:59'),
-             (5, '15：00-23:59'), (6, '17：00-23:59'), (7, '19：00-23:59'), (8, '21：00-23:59'), (9, '23：00-23:59')]
+from app.models.ticket import Company
+from .base import DataRequired
 
 
 class AdminLoginForm(Form):
@@ -20,17 +19,20 @@ class AdminLoginForm(Form):
 
 
 class AddTicketForm(Form):
-    # 下拉列表
-    # status = SelectField('按类型查询', validators=[DataRequired()],
-    #                      choices=[('0', '全部'), ('1', '待审核'), ('2', '认证成功'), ('3', '认证失败')])
+    date_time = [(0, '全天'), (1, '07：00-23:59'), (2, '09：00-23:59'), (3, '11：00-23:59'), (4, '13：00-23:59'),
+                 (5, '15：00-23:59'), (6, '17：00-23:59'), (7, '19：00-23:59'), (8, '21：00-23:59'), (9, '23：00-23:59')]
+    cities = [('bj', '北京'), ('tj', '天津'), ('sh', '上海'), ('cq', '重庆'),
+              ('gz', '广州'), ('qd', '青岛'), ('hz', '杭州'), ('wh', '武汉')]
+
     id = HiddenField('id')
     submit = SubmitField('Submit')
 
     single_double = RadioField('航班类型', choices=[(1, '单程'), (2, '往返')])
     name = StringField('航班名称', validators=[Length(2, 10)])
-    company_name = StringField('航空公司', validators=[DataRequired(), Length(2, 10)])
-    depart = StringField('出发城市', validators=[DataRequired(), Length(2, 10)])
-    arrive = StringField('到达城市', validators=[DataRequired(), Length(2, 10)])
+    company_name = SelectField(label="航空公司", validators=[DataRequired("请选择标签")])
+
+    depart_city = SelectField("出发城市", choices=cities, validators=[DataRequired(), Length(2, 10)])
+    arrive_city = SelectField("到达城市", choices=cities, validators=[DataRequired(), Length(2, 10)])
 
     depart_date = DateField(label='出发日期', format='%Y-%m-%d')
     depart_time = SelectField('出发时间', choices=date_time)
@@ -48,6 +50,11 @@ class AddTicketForm(Form):
 
     depart_ariport = StringField('出发机场')
     arrive_ariport = StringField('到达机场')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # company选择内容从数据库读取
+        self.company_name.choices = [(c.id, c.company_name) for c in Company.query.all()]
 
 
 class AddAdminForm(Form):

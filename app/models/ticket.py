@@ -38,6 +38,6 @@ class Ticket(Base):
 
 class Company(Base):
     __tablename__ = 'company'
-
+    id = Column(Integer,autoincrement=True)
     company_name = Column(String(24), primary_key=True, nullable=False)
     En_name = Column(String, nullable=False)  # 英语名字简写
