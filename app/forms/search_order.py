@@ -16,7 +16,7 @@ class SearchForm(Form):
     cities = [('bj', '北京'), ('tj', '天津'), ('sh', '上海'), ('cq', '重庆'),
               ('gz', '广州'), ('qd', '青岛'), ('hz', '杭州'), ('wh', '武汉')]
 
-    single_double = RadioField('航班类型', choices=[(1, '单程'), (2, '往返')])
+    single_double = RadioField('航班类型', choices=[('单程', '单程'), ('往返', '往返')])
     depart_city = SelectField("出发城市", choices=cities, validators=[DataRequired(), Length(2, 10)])
     arrive_city = SelectField("到达城市", choices=cities, validators=[DataRequired(), Length(2, 10)])
     depart_date = DateField(label='出发日期', format='%Y-%m-%d')

@@ -21,7 +21,6 @@ class User(UserMixin, Base):
     name = Column(String(24), unique=True)
     phone_number = Column(String(18), unique=True)
     id_card = Column(String(24), unique=True)
-    # gifts = relationship('Gift')
 
     _password = Column('password', String(128), nullable=False)
 

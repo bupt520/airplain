@@ -54,7 +54,7 @@ class Base(db.Model):
     @property
     def create_datetime(self):
         if self.create_time:
-            return datetime.fromtimestamp(self.create_time)
+            return datetime.fromtimestamp(self.create_time).strftime('%Y-%m-%d %H:%M:%S')
         else:
             return None
 

@@ -27,7 +27,7 @@ class AddTicketForm(Form):
     id = HiddenField('id')
     submit = SubmitField('Submit')
 
-    single_double = RadioField('航班类型', choices=[(1, '单程'), (2, '往返')])
+    single_double = RadioField('航班类型', choices=[('单程', '单程'), ('往返', '往返')])
     name = StringField('航班名称', validators=[Length(2, 10)])
     company_name = SelectField(label="航空公司", validators=[DataRequired("请选择标签")])
 

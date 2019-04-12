@@ -15,9 +15,9 @@ class Order(Base):
 
     id = Column(Integer, primary_key=True)
 
-    user_id = Column(String(24), ForeignKey('User.id'),nullable=False) # 这个要不要定义一下一个外键，用户名
+    user_id = Column(Integer, ForeignKey('user.id')) # 这个要不要定义一下一个外键，用户名
 
-    order_id = Column(Integer, nullable=False)
+    order_id = Column(String(24), nullable=False)
     # create_time，调用create_datetime,然后.strftime('%Y-%m-%d %H:%M:%S')
     ticket_type = Column(String(24), nullable=False)
     route = Column(String(24), nullable=False)

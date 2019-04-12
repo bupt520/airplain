@@ -12,6 +12,7 @@ web = Blueprint('web', __name__)
 # 下面不加也行
 from app.web import main
 from app.web import auth
+from app.web import search_order
 # from app.web import web
 # from app.web import drift
 # from app.web import gift
