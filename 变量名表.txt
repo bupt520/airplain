@@ -1,0 +1,2 @@
+index.html中需要机票查询表的数据表格实体名: TicketSearchForm;
+TicketSearch.html文件中需要用到的表单实体: TicketSearchForm、TicketOrderForm、TicketResultForm.

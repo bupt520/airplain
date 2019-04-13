@@ -29,7 +29,7 @@
 	img{max-width:100%;}
 /*-- //Reset-Code --*/
 body {
-	background:url('../imgs/1.jpg') no-repeat 0px 0px;
+	background:url('1.jpg') no-repeat 0px 0px;
 	background-size: cover;
 	font-family: 'Open Sans', sans-serif;
 	background-attachment: fixed;
@@ -199,7 +199,7 @@ label.checkbox {
 }
 .checkbox input + i:after {
     content: '';
-    background: url("../imgs/tick.png") no-repeat 5px 5px;
+    background: url("tick.png") no-repeat 5px 5px;
     top: -1px;
     left: -1px;
     width: 15px;

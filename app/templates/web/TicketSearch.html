@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>signin</title>
-    <link rel="stylesheet" href="../css/style.css">
+	<title>订票系统</title>
+	<link rel="stylesheet" href="../../static/style.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
 </head>
 <body>
-<div class="admin">
+  <div class="admin">
     <div class="sap_table">
         <div class="admin-table">
             <div class="admin-table-list">
-                <a id="sign-in" class="admin-table-item" onclick="signin()">管理员登录</a>
+                <a class="admin-table-item" onclick="AdminSignIn()"><span>管理员登录</span></a>
             </div>
         </div>
     </div>
-</div>
-	<h1>机票预订系统</h1>
+ </div>
+
+  <h1>机票查询</h1>
 	<div class="main-agileinfo">
 		<div class="sap_tabs">
 			<div id="horizontalTab">
@@ -23,11 +26,24 @@
                     <a class="resp-tab-item" onclick="window.location.replace('index.html')"><span>网站首页</span></a>
                     <a class="resp-tab-item" onclick="window.location.replace('ticketsearch.html')"><span>机票查询</span></a>
                     <a class="resp-tab-item" onclick="window.location.replace('signup.html')"><span>会员注册</span></a>
-                    <a class="resp-tab-item" onclick="window.location.replace('signin.html')"><span>会员登陆</span></a>
+                    <a class="resp-tab-item" onclick="window.location.replace('VIPSignIn.html')"><span>会员登陆</span></a>
                     <a class="resp-tab-item" onclick="window.location.replace('VIPcenter.html')"><span>会员中心</span></a>
 				</ul>
+				<div class="clearfix"> </div>
             </div>
         </div>
     </div>
+
+
+
+<script>
+    function AdminSignIn() {
+	    window.location.replace('AdminSignIn.html');
+
+    }
+</script>
 </body>
 </html>
+
+
+

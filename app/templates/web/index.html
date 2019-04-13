@@ -1,10 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>index</title>
+	<title>订票系统</title>
+	<link rel="stylesheet" href="../../static/style.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
 </head>
 <body>
-hello，这里是主页
+
+  <div class="admin">
+    <div class="sap_table">
+        <div class="admin-table">
+            <div class="admin-table-list">
+                <a class="admin-table-item" onclick="AdminSignIn()"><span>管理员登录</span></a>
+            </div>
+        </div>
+    </div>
+ </div>
+
+ <h1>航空订票系统</h1>
+	<div class="main-agileinfo">
+		<div class="sap_tabs">
+			<div id="horizontalTab">
+				<ul class="resp-tabs-list">
+                    <a class="resp-tab-item" onclick="window.location.replace('index.html')"><span>网站首页</span></a>
+                    <a class="resp-tab-item" onclick="window.location.replace('TicketSearch.html')"><span>机票查询</span></a>
+                    <a class="resp-tab-item" onclick="window.location.replace('Signup.html')"><span>会员注册</span></a>
+                    <a class="resp-tab-item" onclick="window.location.replace('VIPSignIn.html')"><span>会员登陆</span></a>
+                    <a class="resp-tab-item" onclick="window.location.replace('VIPCenter.html')"><span>会员中心</span></a>
+				</ul>
+				<div class="clearfix"> </div>
+				<div class="resp-tabs-container">
+					<div class="tab-1 resp-tab-content roundtrip">
+						<form method="post">
+
+							<div class="from">
+                                <h3>{{ TicketSearchForm.depart_city.label}}</h3>
+                                {{TicketSearchForm.depart_city()}}
+								<input type="text" name="city" class="city1" placeholder="Type Departure City" required="">
+							</div>
+
+							<div class="to">
+								<h3>到达机场</h3>
+                                <h3>{{TicketSearchForm.arrive_city.label}}</h3>
+                                {{TicketSearchForm.arrive_city()}}
+								<input type="text" name="city" class="city2" placeholder="Type Destination City" required="">
+							</div>
+							<div class="clear"></div>
+							<div class="date">
+								<div class="depart">
+									<h3>出发时间</h3>
+                                    <h3>{{TicketSearchForm.depart_date.label}}</h3>
+                                    {{TicketSearchForm.depart_date()}}
+									<input  id="datepicker" name="Text" type="text" value="mm/dd/yyyy" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
+									<span class="checkbox1">
+										<label class="checkbox"><input type="checkbox" name="" checked=""><i> </i>Flexible with date</label>
+									</span>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="clear"></div>
+							<input type="submit" value="搜索航班">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+  <!--script for portfolio-->
+  <script src="../../static/jquery.min.js"> </script>
+  <script src="../../static/easyResponsiveTabs.js" type="text/javascript"></script>
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $('#horizontalTab').easyResponsiveTabs({
+              type: 'default', //Types: default, vertical, accordion
+              width: 'auto', //auto or any width like 600px
+              fit: true   // 100% fit in a container
+          });
+      });
+  </script>
+
+  <link rel="stylesheet" href="../../static/jquery-ui.css" />
+  <script src="../../static/jquery-ui.js"></script>
+  <
+  <script>
+      $(function() {
+          $( "#datepicker,#datepicker1,#datepicker2,#datepicker3" ).datepicker();
+      });
+  </script>
+
+  <script>
+      $('.value-plus').on('click', function(){
+          var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)+1;
+          divUpd.text(newVal);
+      });
+
+      $('.value-minus').on('click', function(){
+          var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)-1;
+          if(newVal>=1) divUpd.text(newVal);
+      });
+  </script>
+
+  <script>
+	$(document).ready(function () {
+		size_li = $("#myList li").size();
+		x=1;
+		$('#myList li:lt('+x+')').show();
+		$('#loadMore').click(function () {
+			x= (x+1 <= size_li) ? x+1 : size_li;
+			$('#myList li:lt('+x+')').show();
+		});
+		$('#showLess').click(function () {
+			x=(x-1<0) ? 1 : x-1;
+			$('#myList li').not(':lt('+x+')').hide();
+		});
+	});
+</script>
+
+<script>
+    function AdminSignIn() {
+	    window.location.replace('AdminSignIn.html');
+
+    }
+</script>
+<!-- //load-more -->
+
+
+
 </body>
 </html>
