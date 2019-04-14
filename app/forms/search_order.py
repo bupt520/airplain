@@ -4,6 +4,7 @@
     Date：         2019/4/10
     Description :
 """
+from datetime import datetime
 from wtforms import StringField, PasswordField, Form, SelectField, RadioField, DateField
 from wtforms.validators import Length
 from .base import DataRequired
@@ -15,11 +16,10 @@ class SearchForm(Form):
     # 查询机票表单
     cities = [('bj', '北京'), ('tj', '天津'), ('sh', '上海'), ('cq', '重庆'),
               ('gz', '广州'), ('qd', '青岛'), ('hz', '杭州'), ('wh', '武汉')]
-
     single_double = RadioField('航班类型', choices=[('单程', '单程'), ('往返', '往返')])
     depart_city = SelectField("出发城市", choices=cities, validators=[DataRequired(), Length(2, 10)])
     arrive_city = SelectField("到达城市", choices=cities, validators=[DataRequired(), Length(2, 10)])
-    depart_date = DateField(label='出发日期', format='%Y-%m-%d')
+    depart_date = DateField(label='出发日期', format='%Y-%m-%d',default=datetime.now())
     return_date = DateField(label='返程日期', format='%Y-%m-%d')
 
 
