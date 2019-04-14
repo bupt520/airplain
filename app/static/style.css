@@ -112,6 +112,7 @@ h1{
 	color:#fff;	
 }
 .resp-tabs-container {
+	background: rgba(3, 3, 3, 0.57);
 	padding: 0px;
 	clear: left;	
 }
@@ -127,7 +128,6 @@ h2.resp-accordion {
    display: block;
 }
 form {
-    background:rgba(3, 3, 3, 0.57);
     padding: 25px;
 }
 h3 {
