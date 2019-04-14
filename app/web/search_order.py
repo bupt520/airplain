@@ -32,15 +32,21 @@ def search():
         # return '查询到tickets--------' + str(tickets)
 
     form.single_double.default = '往返'
-    # form.depart_date.default = datetime.now().strftime('%Y-%m-%d')
+
     form.process()
-    # return "获取搜索界面"
+
     return render_template('web/index.html',form=form)
 
 
 
 @web.route('/order/<plain_id>', methods=['GET', 'POST'])
+
 def order(plain_id):
+    """
+
+    :param plain_id: 代表航班名称,name
+    :return:
+    """
     order_id = 'P' + datetime.now().strftime('%Y%m%d%H%M%S')
     form = OrderForm(request.form)
 
