@@ -18,7 +18,15 @@ from . import web
 from flask import render_template, request, redirect, url_for, flash
 from app.models.base import db
 from flask_login import login_user, logout_user, current_user
-tickets=[{'name': '502次航班', 'company': '中国东方航空公司', 'depart_date_time': '2019-1-1 全天', 'arrive_date_time': '2019-1-1 12:00', 'depart_airport': '北京', 'arrive_airport': '重庆', 'third_class_pric': '经济舱：1元', 'second_class_pric': '商务舱：2元', 'first_class_pric': '头等舱：3元', 'depart_city': '北京', 'arrive_city': '重庆'}, {'name': '1', 'company': '中国东方航空公司', 'depart_date_time': '2019-1-1 全天', 'arrive_date_time': '2019-1-1 12:00', 'depart_airport': '北京', 'arrive_airport': '重庆', 'third_class_pric': '经济舱：1元', 'second_class_pric': '商务舱：2元', 'first_class_pric': '头等舱：3元', 'depart_city': '北京', 'arrive_city': '重庆'}]
+
+tickets = [
+    {'name': '502次航班', 'company': '中国东方航空公司', 'depart_date_time': '2019-1-1 全天', 'arrive_date_time': '2019-1-1 12:00',
+     'depart_airport': '北京', 'arrive_airport': '重庆', 'third_class_pric': '经济舱：1元', 'second_class_pric': '商务舱：2元',
+     'first_class_pric': '头等舱：3元', 'depart_city': '北京', 'arrive_city': '重庆'},
+    {'name': '1', 'company': '中国东方航空公司', 'depart_date_time': '2019-1-1 全天', 'arrive_date_time': '2019-1-1 12:00',
+     'depart_airport': '北京', 'arrive_airport': '重庆', 'third_class_pric': '经济舱：1元', 'second_class_pric': '商务舱：2元',
+     'first_class_pric': '头等舱：3元', 'depart_city': '北京', 'arrive_city': '重庆'}]
+
 
 @web.route('/search', methods=['GET', 'POST'])
 def search():
@@ -28,19 +36,17 @@ def search():
         # tickets = Ticket.query.filter_by(single_double=form.single_double.data, depart_date=form.depart_date.data,
         #                                  depart_city=form.depart_city.data, arrive_city=form.arrive_city.data).all()
         # tickets = SearchTicket(tickets).tickets  # 列表包含着字典
-        return render_template('web/SearchResults.html',tickets=tickets,form=form)
+        return render_template('web/TicketSearch.html', tickets=tickets, form=form)
         # return '查询到tickets--------' + str(tickets)
 
     form.single_double.default = '往返'
 
     form.process()
 
-    return render_template('web/index.html',form=form)
-
+    return render_template('web/index.html', form=form)
 
 
 @web.route('/order/<plain_id>', methods=['GET', 'POST'])
-
 def order(plain_id):
     """
 
@@ -67,21 +73,22 @@ def order(plain_id):
     form.process()
     return render_template('', form=form, plain_id=plain_id)
 
+
 @web.route('/order/my')
 def my_order():
     userid = current_user.id
-    order=Order().query.filter_by(userid=userid).all()
+    order = Order().query.filter_by(userid=userid).all()
 
     order = MyOrder(order).order
-    return render_template('',order=order)
+    return render_template('', order=order)
 
     pass
+
 
 @web.route('/order/save')
 def order_save():
     form = OrderForm(request.form)
     pass
-
 
 # @web.route('/personalInfo', methods=['GET', 'POST'])
 # def personal_info():

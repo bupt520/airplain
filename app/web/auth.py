@@ -25,9 +25,9 @@ def register():
             # user=user.create_user(form)
             db.session.add(user)
             return 'True'
-    return ('False')
+    # return ('False')
     #     return redirect(url_for('web.login'))
-    # return render_template('auth/register.html', form=form)
+    return render_template('web/SignUp.html', form=form)
 
 
 @web.route('/login', methods=['GET', 'POST'])
@@ -43,8 +43,8 @@ def login():
             return redirect(next)
         else:
             flash('账号不存在或密码错误')
-    return '用户已经登录'
-    # return render_template('auth/login.html', form=form)
+    # return '用户已经登录'
+    return render_template('web/VIPSignIn.html', form=form)
 
 
 @web.route('/personalInfo', methods=['GET', 'POST'])
@@ -67,7 +67,7 @@ def personal_info():
     form.phone_number = user.phone_number
     form.process()
     # user = User.query.filter_by(id=userid).first()
-    return form.phone_number
+    return render_template('web/VIPCenter.html')
 
 
 @web.route('/changeInfo', methods=['GET', 'POST'])
