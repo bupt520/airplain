@@ -67,7 +67,7 @@ def personal_info():
     form.phone_number = user.phone_number
     form.process()
     # user = User.query.filter_by(id=userid).first()
-    return render_template('web/VIPCenter.html')
+    return render_template('web/MyTicket.html')
 
 
 @web.route('/changeInfo', methods=['GET', 'POST'])
