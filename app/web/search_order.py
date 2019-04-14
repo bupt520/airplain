@@ -31,10 +31,11 @@ def search():
         return '查询到tickets--------' + str(tickets)
 
     form.single_double.default = '往返'
-    form.depart_date.default = datetime.now().strftime('%Y-%m-%d')
+    # form.depart_date.default = datetime.now().strftime('%Y-%m-%d')
     form.process()
-    return "获取搜索界面"
-    # return render_template('web/search.html', form=form)
+    # return "获取搜索界面"
+    return render_template('web/index.html',form=form)
+
 
 
 @web.route('/order/<plain_id>', methods=['GET', 'POST'])

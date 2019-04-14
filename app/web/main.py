@@ -10,7 +10,7 @@ from . import web
 
 @web.route('/')
 def index():
-    return render_template('web/index.html')
+    return render_template('web/index.html',form=form)
 
 
 @web.route('/personal')

@@ -36,24 +36,24 @@
 						<form method="post">
 
 							<div class="from">
-                                <h3>{{ form.depart_city.label}}</h3>
-                                {{form.depart_city()}}
-<!--								<input type="text" name="city" class="city1" placeholder="Type Departure City" required="">-->
+                                <h3>{{ TicketSearchForm.depart_city.label}}</h3>
+                                {{TicketSearchForm.depart_city()}}
+								<input type="text" name="city" class="city1" placeholder="Type Departure City" required="">
 							</div>
 
 							<div class="to">
-
-                                <h3>{{form.arrive_city.label}}</h3>
-                                {{form.arrive_city()}}
-<!--								<input type="text" name="city" class="city2" placeholder="Type Destination City" required="">-->
+								<h3>到达机场</h3>
+                                <h3>{{TicketSearchForm.arrive_city.label}}</h3>
+                                {{TicketSearchForm.arrive_city()}}
+								<input type="text" name="city" class="city2" placeholder="Type Destination City" required="">
 							</div>
 							<div class="clear"></div>
 							<div class="date">
 								<div class="depart">
-
-                                    <h3>{{form.depart_date.label}}</h3>
-                                    {{form.depart_date()}}
-<!--									<input  id="datepicker" name="Text" type="text" value="mm/dd/yyyy" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">-->
+									<h3>出发时间</h3>
+                                    <h3>{{TicketSearchForm.depart_date.label}}</h3>
+                                    {{TicketSearchForm.depart_date()}}
+									<input  id="datepicker" name="Text" type="text" value="mm/dd/yyyy" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
 									<span class="checkbox1">
 										<label class="checkbox"><input type="checkbox" name="" checked=""><i> </i>Flexible with date</label>
 									</span>
