@@ -28,6 +28,7 @@ body {
 	background-attachment: fixed;
     background-position: center;
 }
+
 h1,h2,h3,h4,h5,h6{
 	font-family: 'Montserrat', sans-serif;
 
@@ -66,4 +67,135 @@ h3 {
 }
 .changeform{
 	text-align: center;
+}
+
+
+.admin{
+	margin: 30px auto;
+	margin-top:10px;
+}
+.admin-table-list{
+	list-style: none;
+    padding: 15px 0px;
+    margin: 0 auto;
+    text-align: right;
+}
+.admin-table-item{
+	font-size: 1.1em;
+    font-weight: 300;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0;
+    text-align: center;
+    list-style: none;
+    outline: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    margin: 0 1.2em 0;
+	color:#b1b1b1;
+	padding:7px 15px;
+
+}
+h1{
+	color:#fff;
+	font-size:50px;
+	margin-top:10px;
+	text-align:center;
+}
+.main-agileinfo{
+	margin:50px auto;
+	width:70%;
+}
+
+
+.resp-tabs-list {
+    list-style: none;
+    padding: 15px 0px;
+    margin: 0 auto;
+    text-align: center;
+	background: #FFC107;
+}
+.resp-tab-item {
+    font-size: 1.1em;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0;
+    text-align: center;
+    list-style: none;
+    outline: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    margin: 0 1.2em 0;
+	color:#b1b1b1;
+	padding:7px 15px;
+}
+
+.resp-tab-active {
+	color:#fff;
+}
+.resp-tabs-container {
+	background: rgba(3, 3, 3, 0.57);
+	padding: 0px;
+	clear: left;
+}
+h2.resp-accordion {
+	cursor: pointer;
+	padding: 5px;
+	display: none;
+}
+.resp-tab-content {
+	display: none;
+}
+.resp-content-active, .resp-accordion-active {
+   display: block;
+}
+form {
+    padding: 25px;
+}
+h3 {
+    font-size: 16px;
+    color:#FFC107;
+    margin-bottom: 7px;
+}
+.from,.to,.date,.depart,.return{
+	width:48%;
+	float:left;
+}
+.from,.to,.date{
+	margin-bottom:40px;
+}
+.from,.date,.depart{
+	margin-right:4%;
+}
+.signinform{
+	background: rgba(3, 3, 3, 0.57);
+	padding: 0px;
+	text-align: center;
+}
+.adminsign{
+
+}
+input[type="submit"] {
+    font-size: 14px;
+    color: #fff;
+    background:#ffc107;
+    border: none;
+    outline: none;
+    padding: 10px 15px;
+    margin-top: 50px;
+	cursor:pointer;
+	 transition: 0.5s all ease;
+    -webkit-transition: 0.5s all ease;
+    -moz-transition: 0.5s all ease;
+    -o-transition: 0.5s all ease;
+    -ms-transition: 0.5s all ease;
 }

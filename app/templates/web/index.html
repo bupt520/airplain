@@ -13,7 +13,7 @@
     <div class="sap_table">
         <div class="admin-table">
             <div class="admin-table-list">
-                <a class="admin-table-item" onclick="AdminSignIn()"><span>管理员登录</span></a>
+                <a class="admin-table-item" onclick="AdminSignIn"><span>管理员登录</span></a>
             </div>
         </div>
     </div>
@@ -124,7 +124,7 @@
 
 <script>
     function AdminSignIn() {
-	    window.location.replace('AdminSignIn.html');
+	    window.location.replace('{{ url_for('admin.login') }}');
 
     }
 </script>
