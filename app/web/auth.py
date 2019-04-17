@@ -66,6 +66,8 @@ def personal_info():
     form.id_card.default = user.id_card
     form.phone_number = user.phone_number
     form.process()
+    # current_user._get_current_object()
+
     # user = User.query.filter_by(id=userid).first()
     return render_template('web/MyTicket.html')
 
