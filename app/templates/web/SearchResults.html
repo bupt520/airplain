@@ -23,30 +23,30 @@
 		<div class="sap_tabs">
 			<div id="horizontalTab">
 				<ul class="resp-tabs-list">
-                    <a class="resp-tab-item" onclick="window.location.replace('index.html')"><span>网站首页</span></a>
-                    <a class="resp-tab-item" onclick="window.location.replace('TicketSearch.html')"><span>机票查询</span></a>
-                    <a class="resp-tab-item" onclick="window.location.replace('Signup.html')"><span>会员注册</span></a>
-                    <a class="resp-tab-item" onclick="window.location.replace('VIPSignIn.html')"><span>会员登陆</span></a>
-                    <a class="resp-tab-item" onclick="window.location.replace('VIPCenter.html')"><span>会员中心</span></a>
+                    <a class="resp-tab-item" onclick="window.location.replace('web/index.html')"><span>网站首页</span></a>
+                    <a class="resp-tab-item" onclick="window.location.replace('web/TicketSearch.html')"><span>机票查询</span></a>
+                    <a class="resp-tab-item" onclick="window.location.replace('web/Signup.html')"><span>会员注册</span></a>
+                    <a class="resp-tab-item" onclick="window.location.replace('web/VIPSignIn.html')"><span>会员登陆</span></a>
+                    <a class="resp-tab-item" onclick="window.location.replace('web/VIPCenter.html')"><span>会员中心</span></a>
 				</ul>
 				<div class="clearfix"> </div>
-                <div class="resp-tabs-container">
+                <div class="resp-tabs-container">admin/
                         <div class="SearchResultSearch">
                     <form method="post">
                         <div class="single_double">
-                           {{form.single_double}}
+                           {{searchform.single_double}}
                         </div>
                         <div class="infocities">
-                            <h5>{{form.depart_city.label}}</h5>
-                            {{form.depart_city}}
-                            <h5>{{form.arrive_city.label}}</h5>
-                            {{form.arrive_city}}
+                            <h5>{{searchform.depart_city.label}}</h5>
+                            {{searchform.depart_city}}
+                            <h5>{{searchform.arrive_city.label}}</h5>
+                            {{searchform.arrive_city}}
                         </div>
                         <div class="infodate">
-                            <h5>{{form.depart_date.label}}</h5>
-                            {{form.depart_date}}
-                            <h5>{{form.return_date.label}}</h5>
-                            {{form.return_date}}
+                            <h5>{{searchform.depart_date.label}}</h5>
+                            {{searchform.depart_date}}
+                            <h5>{{searchform.return_date.label}}</h5>
+                            {{searchform.return_date}}
                         </div>
                         <div class="infosubmit">
                             <input type="submit" value="搜索航班">
@@ -73,7 +73,7 @@
 
 <script>
     function AdminSignIn() {
-	    window.location.replace('AdminSignIn.html');
+	    window.location.replace('admin/AdminSignIn.html');
 
     }
 </script>

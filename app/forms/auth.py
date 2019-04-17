@@ -35,6 +35,7 @@ class RegisterForm(Form):
         if User.query.filter_by(nickname=field.data).first():
             raise ValidationError('昵称已存在')
 
+
 class ChangeInfoForm(Form):
     nickname = StringField('用户名', validators=[DataRequired(), Length(2, 10)])
     password = PasswordField('密码', validators=[DataRequired(), Length(6, 20)])

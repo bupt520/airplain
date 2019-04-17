@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-#
-#-------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 # Name:         base
 # Date:         2019/4/9
-#-------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 
 from datetime import datetime
 from contextlib import contextmanager
@@ -45,7 +45,7 @@ class BaseMixin(object):
 
 
 class Base(db.Model):
-    __abstract__ = True#作为模板基类，不去创建这个表
+    __abstract__ = True  # 作为模板基类，不去创建这个表
     create_time = Column('create_time', Integer)
 
     def __init__(self):
@@ -65,4 +65,3 @@ class Base(db.Model):
         for key, value in attrs.items():
             if hasattr(self, key) and key != 'id':
                 setattr(self, key, value)
-

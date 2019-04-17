@@ -61,6 +61,6 @@ def change_info(nickname):
             print('管理员信息修改成功')
     if request.method == 'DELETE':
         with db.auto_commit():
-            a = Admin.query.filter_by(nickname=nickname).delete()
-            print(a)
+            ad = Admin.query.filter_by(nickname=nickname).first()
+            db.session.delete(ad)
     return redirect(url_for('admin.admin_manage'))

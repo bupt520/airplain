@@ -10,8 +10,6 @@ from wtforms.validators import Length
 from .base import DataRequired
 
 
-
-
 class SearchForm(Form):
     # 查询机票表单
     cities = [('北京', '北京'), ('天津', '天津'), ('上海', '上海'), ('重庆', '重庆'),
@@ -19,7 +17,7 @@ class SearchForm(Form):
     single_double = RadioField('航班类型', choices=[('单程', '单程'), ('往返', '往返')])
     depart_city = SelectField("出发城市", choices=cities, validators=[DataRequired(), Length(2, 10)])
     arrive_city = SelectField("到达城市", choices=cities, validators=[DataRequired(), Length(2, 10)])
-    depart_date = DateField(label='出发日期', format='%Y-%m-%d',default=datetime.now())
+    depart_date = DateField(label='出发日期', format='%Y-%m-%d', default=datetime.now())
     return_date = DateField(label='返程日期', format='%Y-%m-%d')
 
 

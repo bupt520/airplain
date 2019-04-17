@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-#
-#-------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 # Name:         setting
 # Date:         2019/4/9
-#-------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 DEBUG = True
 SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:mysql123@localhost:3306/airplain'
 
@@ -15,7 +15,6 @@ MAIL_USE_SSL = True
 MAIL_USE_TSL = False
 MAIL_USERNAME = '1518943695@qq.com'
 MAIL_PASSWORD = 'xmbkzeoffythbahc'
-
 
 # 开启数据库查询性能测试
 SQLALCHEMY_RECORD_QUERIES = True
@@ -32,5 +31,3 @@ SQLALCHEMY_ECHO = True
 from datetime import timedelta
 
 REMEMBER_COOKIE_DURATION = timedelta(days=30)
-
-

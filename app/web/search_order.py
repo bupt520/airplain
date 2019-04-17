@@ -59,6 +59,7 @@ def order(plain_id):
     orderform.process()
     return render_template('web/OrderInfo.html', orderform=orderform)
 
+
 @web.route('/order/save_order', methods=['POST'])
 def save_order():
     form = OrderForm(request.form)
@@ -85,9 +86,6 @@ def my_order():
 
     my_order = MyOrder(order).order
     return render_template('', my_order=my_order)
-
-
-
 
 # @web.route('/personalInfo', methods=['GET', 'POST'])
 # def personal_info():
