@@ -14,8 +14,8 @@ from .base import DataRequired
 
 class SearchForm(Form):
     # 查询机票表单
-    cities = [('bj', '北京'), ('tj', '天津'), ('sh', '上海'), ('cq', '重庆'),
-              ('gz', '广州'), ('qd', '青岛'), ('hz', '杭州'), ('wh', '武汉')]
+    cities = [('北京', '北京'), ('天津', '天津'), ('上海', '上海'), ('重庆', '重庆'),
+              ('广州', '广州'), ('青岛', '青岛'), ('杭州', '杭州'), ('武汉', '武汉')]
     single_double = RadioField('航班类型', choices=[('单程', '单程'), ('往返', '往返')])
     depart_city = SelectField("出发城市", choices=cities, validators=[DataRequired(), Length(2, 10)])
     arrive_city = SelectField("到达城市", choices=cities, validators=[DataRequired(), Length(2, 10)])
@@ -26,7 +26,9 @@ class SearchForm(Form):
 class OrderForm(Form):
     # 预订机票表单
     order_id = StringField('订单号', validators=[DataRequired()])
-    ticket_type = SelectField('出发时间', choices=[(0, '经济舱'), (1, '商务舱'), (2, '头等舱')])
+    route = StringField('行程', validators=[DataRequired()])
+    depart_time = StringField('起飞时间', validators=[DataRequired()])
+    ticket_type = SelectField('机票类型', choices=[(0, '经济舱'), (1, '商务舱'), (2, '头等舱')])
     name = StringField('姓名', validators=[DataRequired(), Length(1, 10)])
     phone_number = StringField('手机号码', validators=DataRequired())
     id_card = StringField('身份证号码', validators=DataRequired())

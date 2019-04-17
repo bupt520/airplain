@@ -1,0 +1,6 @@
+点击我要预定之后，action=url_for(web.order,plain_id=我传给你的ticket的name)，method=get
+然后显示OrderInfo界面，这个界面的form我又加了几个。
+
+点击确认订单的action为url_for（web.save_order)method=post
+之后显示Myticket.html 显示的信息为my_order，格式和tickets一样
+
