@@ -15,31 +15,33 @@ from flask import render_template, request, redirect, url_for, flash
 from app.models.base import db
 from flask_login import login_user, logout_user, current_user
 
-
+@admin.route('/admin/test')
+def test():
+    return 'test'
 # 请求和添加公司
 @admin.route('/admin/company', methods=['GET', 'POST'])
 def company():
-    add_company_form = AddCompanyForm(request.form)
+    form = AddCompanyForm(request.form)
     Company.query().all()
     companys = CompanyInfo(Company.query().all())
-    if request.method == 'POST':  # and add_company_form.validate():
+    if request.method == 'POST':  # and form.validate():
         with db.auto_commit():
             company = Company()
-            company.set_attrs(add_company_form.data)
+            company.set_attrs(form.data)
             db.session.add(company)
             return redirect(url_for('admin.company'))
-    return render_template('admin/CompanyManage.html', add_company_form=add_company_form, companys=companys)
+    return render_template('admin/CompanyManage.html', form=form, companys=companys)
 
 
 # 修改删除公司，先不写
 @admin.route('/admin/company/<company_name>', methods=['GET', 'POST'])
 def add_company(company_name):
-    add_company_form = AddCompanyForm(request.form)
+    form = AddCompanyForm(request.form)
     Company.query().all()
-    if request.method == 'POST':  # and add_company_form.validate():
+    if request.method == 'POST':  # and form.validate():
         with db.auto_commit():
             company = Company()
-            company.set_attrs(add_company_form.data)
+            company.set_attrs(form.data)
             db.session.add(company)
             return '添加公司成功'
             # return redirect(url_for('web.login'))
@@ -47,14 +49,14 @@ def add_company(company_name):
 
 @admin.route('/admin/ticket', methods=['GET', 'POST'])
 def add_ticket():
-    add_ticket_form = AddTicketForm(request.form)
+    form = AddTicketForm(request.form)
     if request.method == 'POST':  # and form.validate():
         with db.auto_commit():
             ticket = Ticket()
-            ticket.set_attrs(add_ticket_form.data)
+            ticket.set_attrs(form.data)
             db.session.add(ticket)
             return redirect(url_for('admin.add_ticket'))
-    return render_template('admin/TicketAdd.html', add_ticket_form=add_ticket_form)
+    return render_template('admin/TicketAdd.html', form=form)
 
 
 @admin.route('/admin/order/manage', methods=['GET', 'POST', 'DELETE'])

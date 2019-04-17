@@ -37,5 +37,5 @@ def create_app():
 def register_blueprint(app):
     from app.web import web
     from app.admin import admin
-    # app.register_blueprint(admin)
+    app.register_blueprint(admin)
     app.register_blueprint(web)
