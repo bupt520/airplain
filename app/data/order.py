@@ -39,6 +39,7 @@ class ManageOrder():
             temp_order['route']=order.route
             temp_order['depart_time']=order.depart_time
             temp_order['status']=order.status
-            temp_order['user_name']=user.nickname
+            # temp_order['user_name']=user.nickname
+            temp_order['user_name']=order.user_of_order[0].nickname
 
             self.order.append(temp_order)
