@@ -4,3 +4,11 @@
 点击确认订单的action为url_for（web.save_order)method=post
 之后显示Myticket.html 显示的信息为my_order，格式和tickets一样
 
+
+后台管理那里，
+在adminIndex里添加管理员的时候点击提交数据跳转url_for('admin.add_admin')
+表单和管理员数据为adminform=adminform, admins=admins，admins数据结构同tickets
+
+点击修改和删除时，分别使用post和delete方法
+传入管理员名字nickname=nickname
+

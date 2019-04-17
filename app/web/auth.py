@@ -43,7 +43,6 @@ def login():
             return redirect(next)
         else:
             flash('账号不存在或密码错误')
-    # return '用户已经登录'
     return render_template('web/VIPSignIn.html', form=form)
 
 
