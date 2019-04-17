@@ -1,0 +1,21 @@
+点击我要预定之后，action=url_for(web.order,plain_id=我传给你的ticket的name)，method=get
+然后显示OrderInfo界面，这个界面的form我又加了几个。
+
+点击确认订单的action为url_for（web.save_order)method=post
+之后显示Myticket.html 显示的信息为my_order，格式和tickets一样
+
+
+后台管理那里，
+点击管理员登陆的时候是url_for('admin.login')
+
+在adminIndex里添加管理员的时候点击提交数据跳转url_for('admin.add_admin')
+表单和管理员数据为adminform=adminform, admins=admins，admins数据结构同tickets
+
+点击修改和删除时，分别使用post和delete方法
+传入管理员名字nickname=nickname
+
+
+添加公司和页面在admin/ticket_manage.py
+add_company_form=add_company_form,companys=companys
+
+添加机票add_ticket_form=add_ticket_form

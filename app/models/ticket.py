@@ -8,10 +8,11 @@ from sqlalchemy.orm import relationship, backref
 from app.models.base import Base
 from sqlalchemy import Column, Integer, String, Boolean, Float, ForeignKey
 
+
 class Company(Base):
     __tablename__ = 'company'
     company_name = Column(String(24), primary_key=True, nullable=False)
-    id = Column(Integer,autoincrement=True)
+    id = Column(Integer, autoincrement=True)
     En_name = Column(String(24), nullable=False)  # 英语名字简写
 
 
@@ -21,7 +22,7 @@ class Ticket(Base):
     id = Column(Integer, primary_key=True)
     single_double = Column(String(4), nullable=False)  # 单或双
     name = Column(String(24), unique=True)
-    company_name = Column(String(24), ForeignKey('company.company_name'), nullable=False )
+    company_name = Column(String(24), ForeignKey('company.company_name'), nullable=False)
     depart_city = Column(String(24), nullable=False)
     arrive_city = Column(String(24), nullable=False)
     depart_date = Column(String(24))  # time
@@ -40,6 +41,3 @@ class Ticket(Base):
     arrive_airport = Column(String(24))
 
     company = relationship('Company', backref=backref('ticket_of_company'))
-
-
-

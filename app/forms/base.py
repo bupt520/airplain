@@ -9,6 +9,7 @@ from flask import request
 from wtforms import Form
 from wtforms.validators import DataRequired as WTFDataRrequired
 
+
 # from app.libs.error_message import FormException
 
 
@@ -25,6 +26,7 @@ class DataRequired(WTFDataRrequired):
             field_text = field.label.text
             self.message = field_text + '不能为空，请填写' + field_text
         super(DataRequired, self).__call__(form, field)
+
 
 class BaseForm(Form):
     def __init__(self):

@@ -24,11 +24,11 @@
 		<div class="sap_tabs">
 			<div id="horizontalTab">
 				<ul class="resp-tabs-list">
-                    <a class="resp-tab-item" onclick={{url_for('web.index')}}><span>网站首页</span></a>
-                    <a class="resp-tab-item" onclick={{url_for('web.search')}}><span>机票查询</span></a>
-                    <a class="resp-tab-item" onclick={{url_for('web.search')}}><span>会员注册</span></a>
-                    <a class="resp-tab-item" onclick={{url_for('web.search')}}><span>会员登陆</span></a>
-                    <a class="resp-tab-item" onclick={{url_for('web.search')}}><span>会员中心</span></a>
+                    <a class="resp-tab-item" onclick="{{url_for('web.index')}}"><span>网站首页</span></a>
+                    <a class="resp-tab-item" onclick="{{url_for('web.search')}}"><span>机票查询</span></a>
+                    <a class="resp-tab-item" onclick="{{url_for('web.search')}}"><span>会员注册</span></a>
+                    <a class="resp-tab-item" onclick="{{url_for('web.search')}}"><span>会员登陆</span></a>
+                    <a class="resp-tab-item" onclick="{{url_for('web.search')}}"><span>会员中心</span></a>
                     <!--<a class="resp-tab-item" onclick="window.location.replace('AdminIndex.html')"><span>网站首页</span></a>-->
                     <!--<a class="resp-tab-item" onclick="window.location.replace('TicketSearch.html')"><span>机票查询</span></a>-->
                     <!--<a class="resp-tab-item" onclick="window.location.replace('Signup.html')"><span>会员注册</span></a>-->
@@ -38,7 +38,7 @@
 				<div class="clearfix"> </div>
 				<div class="resp-tabs-container">
 					<div class="tab-1 resp-tab-content roundtrip">
-						<form action={{url_for('web.search')}} method="post">
+						<form action="{{url_for('web.search')}}" method="post">
 							<div class="from">
                                 {{form.single_double}}
                                 <h3>{{ form.depart_city.label}}</h3>
