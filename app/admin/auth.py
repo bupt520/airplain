@@ -15,10 +15,10 @@ from flask_login import login_user, logout_user, current_user
 
 @admin.route('/admin/login', methods=['GET', 'POST'])
 def login():
-    loginform = LoginForm(request.form)
-    if request.method == 'POST':  # and loginform.validate():
-        ad = Admin.query.filter_by(nickname=loginform.nickname.data).first()
-        if ad and ad.check_passward(loginform.password.data):
+    form = LoginForm(request.form)
+    if request.method == 'POST':  # and form.validate():
+        ad = Admin.query.filter_by(nickname=form.nickname.data).first()
+        if ad and ad.check_passward(form.password.data):
             login_user(ad, remember=True)
             next = request.args.get('next')
             if not next:  # or not next.startwith('/'):
@@ -26,23 +26,23 @@ def login():
             return redirect(next)
         else:
             flash('账号不存在或密码错误')
-    return render_template('admin/AdminSignIn.html', loginform=loginform)
+    return render_template('admin/AdminSignIn.html', form=form)
 
 
 @admin.route('/admin/manage')
 def admin_manage():
-    adminform = AddAdminForm(request.form)
+    form = AddAdminForm(request.form)
     admins = AdminInfo(Admin.query().all()).admins
-    return render_template('admin/AdminIndex.html', adminform=adminform, admins=admins)
+    return render_template('admin/AdminIndex.html', form=form, admins=admins)
 
 
 @admin.route('/admin/addAdmin', methods=['GET', 'POST'])
 def add_admin():
-    adminform = AddAdminForm(request.form)
-    if request.method == 'POST' and adminform.validate():
+    form = AddAdminForm(request.form)
+    if request.method == 'POST' and form.validate():
         with db.auto_commit():
             ad = Admin()
-            ad.set_attrs(adminform.data)
+            ad.set_attrs(form.data)
             # user=user.create_user(form)
             db.session.add(ad)
             return redirect(url_for('admin.admin_manage'))
@@ -50,13 +50,13 @@ def add_admin():
 
 @admin.route('/admin/changeInfo<nickname>', methods=['DELETE', 'POST'])
 def change_info(nickname):
-    change_admin_form = AddAdminForm(request.form)
-    change_admin_form.nickname.default=nickname
-    change_admin_form.process()
+    form = AddAdminForm(request.form)
+    form.nickname.default=nickname
+    form.process()
     ad = Admin.query.filter_by(nickname=nickname).first()
 
-    if request.method == 'POST':# and change_admin_form.validate():
-        changed = ad.change_info(change_admin_form)
+    if request.method == 'POST':# and form.validate():
+        changed = ad.change_info(form)
         if changed:
             print('管理员信息修改成功')
     if request.method == 'DELETE':

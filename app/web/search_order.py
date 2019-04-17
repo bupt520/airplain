@@ -40,7 +40,7 @@ def search():
 
     searchform.single_double.default = '往返'
     searchform.process()
-    return render_template('web/index.html', orderform=searchform)
+    return render_template('web/index.html', form=searchform)
 
 
 @web.route('/order/<plain_id>')
@@ -50,14 +50,14 @@ def order(plain_id):
     :return:
     """
     order_id = 'P' + datetime.now().strftime('%Y%m%d%H%M%S')
-    orderform = OrderForm(request.form)
+    form = OrderForm(request.form)
     ticket = Ticket.query.filter_by(name=plain_id).first()
 
-    orderform.order_id.default = order_id
-    orderform.route.default = ticket.depart_city.data + '-' + ticket.arrive_city.data
-    orderform.depart_time.default = ticket.depart_date.data + '-' + ticket.depart_time.data
-    orderform.process()
-    return render_template('web/OrderInfo.html', orderform=orderform)
+    form.order_id.default = order_id
+    form.route.default = ticket.depart_city.data + '-' + ticket.arrive_city.data
+    form.depart_time.default = ticket.depart_date.data + '-' + ticket.depart_time.data
+    form.process()
+    return render_template('web/OrderInfo.html', form=form)
 
 
 @web.route('/order/save_order', methods=['POST'])
@@ -86,6 +86,7 @@ def my_order():
 
     my_order = MyOrder(order).order
     return render_template('', my_order=my_order)
+
 
 # @web.route('/personalInfo', methods=['GET', 'POST'])
 # def personal_info():
