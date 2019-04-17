@@ -87,6 +87,7 @@ def my_order():
     my_order = MyOrder(order).order
     return render_template('', my_order=my_order)
 
+
 # @web.route('/personalInfo', methods=['GET', 'POST'])
 # def personal_info():
 #     userid = current_user.id
