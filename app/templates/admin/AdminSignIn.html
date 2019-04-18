@@ -31,13 +31,13 @@
 				</ul>
 				<div class="clearfix"> </div>
                 <div class="signinform">
-                    <form class="adminsign" action="{{ url_for(admin.login) }}" method="post">
-                        <table style="margin: 0 auto">
-                            <tr>
-                                <td>{{ form.nickname.label }}</td>  <td>{{ form.nickname }}</td>
+                    <form class="adminsign" action="{{ url_for('admin.login') }}" method="post">
+                        <table style="margin: 0 auto;width: auto;height: auto">
+                            <tr style="height: 50px;width: 100px">
+                                <td style="height: 50px">{{ form.nickname.label }}</td> <td>{{ form.nickname }}</td>
                             </tr>
-                            <tr>
-                                <td>{{ form.password.label }}</td>  <td>{{ form.password }}</td>
+                            <tr style="height: 50px;width: 100px">
+                                <td style="height: 50px">{{ form.password.label }}</td>  <td>{{ form.password }}</td>
                             </tr>
                         </table>
                         <input type="submit" value="登录">
