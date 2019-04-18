@@ -53,8 +53,19 @@
     </div>
     <div class="ticke_order_req">
         <table>
-            {%   for item in form %}
             <tr>
+                <td> 订单编号 </td>
+                <td> 订单路线 </td>
+                <td> 出发时间 </td>
+                <td> 舱位等级 </td>
+                <td> 乘客姓名 </td>
+                <td> 乘客电话 </td>
+                <td> 乘客证件 </td>
+                <td> 确认 </td>
+                <td> 删除 </td>
+            </tr>
+            {% for item in orders %}
+                <tr>
                 <td>{{ item.order_id }}</td>
                 <td>{{ item.route }}</td>
                 <td>{{ item.depart_time }}</td>
@@ -62,9 +73,11 @@
                 <td>{{ item.name }}</td>
                 <td>{{ item.phone_number }}</td>
                 <td>{{ item.id_card }}</td>
-                <td><input type="submit" value="确认订单" href="{{ url_for('#',order_id = item.order_id) }}"></td>
-            </tr>
+                <td><a methods="post" href="{{ url_for('admin.manage_order',order_id = item.order_id) }}"><span>确认</span></a></td>
+                <td><a methods="delete" href="{{ url_for('admin.manage_order',item.order_id) }}"><span>删除</span></a></td>
+                </tr>
             {% endfor %}
+
         </table>
     </div>
 </div>

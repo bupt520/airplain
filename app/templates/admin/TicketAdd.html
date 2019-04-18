@@ -52,7 +52,7 @@
         <h3>增添/修改机票</h3>
     </div>
     <div class="changeform">
-        <form action="#" method="post">
+        <form action="{{ url_for('admin.add_ticket') }}" method="post">
             <table>
                 <tr>
                     <td>{{ form.single_double.label }}</td>

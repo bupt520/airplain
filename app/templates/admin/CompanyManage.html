@@ -50,22 +50,35 @@
 <div class="right">
     <div class="company_manage">
         <table>
-            {% for item in form %}
+            <tr>
+                <td>航空公司英文符号</td>
+                <td>中文名字</td>
+                <td>删除</td>
+                <td>修改</td>
+            </tr>
+            {% for item in companys %}
                 <tr>
-                    <td>
-
-                    </td>
-                <td>
-                    <form action="{{ url_for() }}" method="delete">
-                        <input type="submit" value="删除">
-                    </form>
-                </td>
+                <td>{{ item.En_name }}</td>
+                <td>{{ item.company_name }}</td>
+                <td> <a methods="delete" href="{{ url_for('admin.company', item.En_name) }}"><span>删除</span></a> </td>
+                <td> <a methods="put" href="{{ url_for('admin.company', item.En_name) }}"><span>修改</span></a> </td>
                 </tr>
             {% endfor %}
+
         </table>
     </div>
     <div class="company_add">
-
+        <form action="{{ url_for('admin.company') }}" method="post">
+            <table>
+                <tr>
+                    <td>{{ form.En_name.label }}</td>   <td>{{ form.En_name }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.company_name.label }}</td>  <td>{{ form.company_name }}</td>
+                </tr>
+            </table>
+            <input type="submit" value="提交">
+        </form>
     </div>
 </div>
 </body>
