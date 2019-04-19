@@ -2,9 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>机票预订</title>
+    <link rel="stylesheet" href="../../static/style.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
 </head>
 <body>
+ <h1>航空订票系统</h1>
+	<div class="main-agileinfo">
+        <ul class="resp-tabs-list">
+            <a class="resp-tab-item" onclick="window.location.replace('web/index.html')"><span>网站首页</span></a>
+            <a class="resp-tab-item" onclick="window.location.replace('web/TicketSearch.html')"><span>机票查询</span></a>
+            <a class="resp-tab-item" onclick="window.location.replace('web/Signup.html')"><span>会员注册</span></a>
+            <a class="resp-tab-item" onclick="window.location.replace('web/VIPSignIn.html')"><span>会员登陆</span></a>
+            <a class="resp-tab-item" onclick="window.location.replace('web/VIPCenter.html')"><span>会员中心</span></a>
+        </ul>
+        <div class="clearfix"> </div>
+         <div class="resp-tabs-container">
+             <div class="orderform" style="text-align: center">
+                 <form action="{{ url_for('web.save_order') }}" method="post">
+                     <div class="orderlabel">{{ form.order_id.label }}  {{ form.order_id }}</div>
+                     <div class="ordertickettype">{{ form.ticket_type.label }}   {{ form.ticket_type }}</div>
+                     <div class="orderdeparttime">{{ form.depart_time.label }}   {{ form.depart_time }}</div>
+                     <div class="orderroute">{{ form.route.label }}     {{ form.route }}</div>
+                     <div class="orderphone">{{ form.phone_number.label }}  {{ form.phone_number }}</div>
+                     <div class="orderid">{{ form.id_card.label }}   {{ form.id_card }}</div>
+                     <input type="submit" value="确认订单">
+                 </form>
+             </div>
+         </div>
+    </div>
 
 </body>
 </html>

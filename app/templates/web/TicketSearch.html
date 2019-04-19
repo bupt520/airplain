@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>订票系统</title>
+	<title>机票查询</title>
 	<link rel="stylesheet" href="../../static/style.css">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -20,16 +20,36 @@
 
   <h1>机票查询</h1>
 	<div class="main-agileinfo">
-		<div class="sap_tabs">
-			<div id="horizontalTab">
-				<ul class="resp-tabs-list">
-                    <a class="resp-tab-item" onclick="window.location.replace('index.html')"><span>网站首页</span></a>
-                    <a class="resp-tab-item" onclick="window.location.replace('ticketsearch.html')"><span>机票查询</span></a>
-                    <a class="resp-tab-item" onclick="window.location.replace('signup.html')"><span>会员注册</span></a>
-                    <a class="resp-tab-item" onclick="window.location.replace('VIPSignIn.html')"><span>会员登陆</span></a>
-                    <a class="resp-tab-item" onclick="window.location.replace('VIPcenter.html')"><span>会员中心</span></a>
-				</ul>
-				<div class="clearfix"> </div>
+        <ul class="resp-tabs-list">
+            <a class="resp-tab-item" onclick="window.location.replace('index.html')"><span>网站首页</span></a>
+            <a class="resp-tab-item" onclick="window.location.replace('ticketsearch.html')"><span>机票查询</span></a>
+            <a class="resp-tab-item" onclick="window.location.replace('signup.html')"><span>会员注册</span></a>
+            <a class="resp-tab-item" onclick="window.location.replace('VIPSignIn.html')"><span>会员登陆</span></a>
+            <a class="resp-tab-item" onclick="window.location.replace('VIPcenter.html')"><span>会员中心</span></a>
+        </ul>
+        <div class="clearfix"> </div>
+        <div class="resp-tabs-container">
+            <div class="SearchResultSearch">
+                <form action="{{ url_for('web.search') }}" method="post" style="margin: auto">
+                    <div class="single_double">
+                        {{form.single_double}}
+                    </div>
+                    <div class="infocities">
+                        <h5>{{form.depart_city.label}}</h5>
+                        {{form.depart_city}}
+                        <h5>{{form.arrive_city.label}}</h5>
+                        {{form.arrive_city}}
+                    </div>
+                    <div class="infodate">
+                        <h5>{{form.depart_date.label}}</h5>
+                        {{form.depart_date}}
+                        <h5>{{form.return_date.label}}</h5>
+                        {{form.return_date}}
+                    </div>
+                    <div class="infosubmit">
+                        <input type="submit" value="搜索航班">
+                    </div>
+                </form>
             </div>
         </div>
     </div>

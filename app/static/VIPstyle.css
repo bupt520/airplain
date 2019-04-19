@@ -1,0 +1,115 @@
+/*-- Reset-Code --*/
+	html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+	article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+	ol,ul{list-style:none;margin:0px;padding:0px;}
+	blockquote,q{quotes:none;}
+	blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+	table{border-collapse:collapse;border-spacing:0;}
+	/* start editing from here */
+	a{text-decoration:none;}
+	.txt-rt{text-align:right;}/* text align right */
+	.txt-lt{text-align:left;}/* text align left */
+	.txt-center{text-align:center;}/* text align center */
+	.float-rt{float:right;}/* float right */
+	.float-lt{float:left;}/* float left */
+	.clear{clear:both;}/* clear float */
+	.pos-relative{position:relative;}/* Position Relative */
+	.pos-absolute{position:absolute;}/* Position Absolute */
+	.vertical-base{vertical-align:baseline;}/* vertical align baseline */
+	.vertical-top{vertical-align:top;}/* vertical align top */
+	nav.vertical ul li{display:block;}/* vertical menu */
+	nav.horizontal ul li{display: inline-block;}/* horizontal menu */
+	img{max-width:100%;}
+/*-- //Reset-Code --*/
+body {
+	background:url('1.jpg') no-repeat 0px 0px;
+	background-size: cover;
+	font-family: 'Open Sans', sans-serif;
+	background-attachment: fixed;
+    background-position: center;
+}
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Montserrat', sans-serif;
+
+}
+h1{
+	color:#fff;
+	font-size:50px;
+	margin-top:10px;
+	text-align:center;
+}
+.VIPhead{
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+.VIPheadtitle{
+
+}
+.menulist{
+    list-style: none;
+    padding: 15px 0px;
+    margin: 0 auto;
+    text-align: center;
+	background: #FFC107;
+}
+.menu-tab-item{
+	font-size: 1.1em;
+    font-weight: 300;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0;
+    text-align: center;
+    list-style: none;
+    outline: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    margin: 0 1.2em 0;
+	color:#b1b1b1;
+	padding:7px 15px;
+
+}
+
+.content{
+	background: rgba(3, 3, 3, 0.57);
+	padding: 0px;
+	clear: left;
+}
+.left{
+	margin: 0px auto;
+	width: 20%;
+	float: left;
+}
+.right{
+	margin: 0px auto;
+	width: 80%;
+	float: right;
+}
+.signupform{
+	margin: 0px auto;
+	width: 75%;
+	float: none;
+}
+input[type="submit"] {
+    font-size: 14px;
+    color: #fff;
+    background:#ffc107;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    margin-top: 50px;
+	cursor:pointer;
+	 transition: 0.5s all ease;
+    -webkit-transition: 0.5s all ease;
+    -moz-transition: 0.5s all ease;
+    -o-transition: 0.5s all ease;
+    -ms-transition: 0.5s all ease;
+}
+input[type="submit"]:hover  {
+    background:#212121;
+	color:#fff;
+}

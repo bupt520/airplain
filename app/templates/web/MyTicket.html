@@ -1,49 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>用户中心</title>
-	<link rel="stylesheet" href="../../static/style.css">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-
+    <meta charset="UTF-8">
+    <title>用户中心</title>
+    <link rel="stylesheet" href="../../static/VIPstyle.css">
 </head>
 <body>
-  <div class="admin">
-    <div class="sap_table">
-        <div class="admin-table">
-            <div class="admin-table-list">
-                <a class="admin-table-item" onclick="AdminSignIn()"><span>管理员登录</span></a>
-            </div>
-        </div>
+<div class="VIPhead">
+    <h1>用户中心</h1>
+</div>
+<div class="VIPheadtitle">
+    <div class="menutap">
+        <ul class="menulist">
+            <a class="menu-tab-item" onclick="window.location.replace('../web/index.html')"><span>网站首页</span></a>
+            <a class="menu-tab-item" onclick="window.location.replace('../web/TicketSearch.html')"><span>机票查询</span></a>
+            <a class="menu-tab-item" onclick="window.location.replace('../web/SignUp.html')"><span>会员注册</span></a>
+            <a class="menu-tab-item" onclick="window.location.replace('../web/VIPSignIn.html')"><span>会员登陆</span></a>
+            <a class="menu-tab-item" onclick="window.location.replace('../web/VIPInfo.html')"><span>会员中心</span></a>
+        </ul>
     </div>
- </div>
-
-  <h1>用户中心</h1>
-	<div class="main-agileinfo">
-		<div class="sap_tabs">
-			<div id="horizontalTab">
-				<ul class="resp-tabs-list">
-                    <a class="resp-tab-item" onclick="window.location.replace('index.html')"><span>网站首页</span></a>
-                    <a class="resp-tab-item" onclick="window.location.replace('ticketsearch.html')"><span>机票查询</span></a>
-                    <a class="resp-tab-item" onclick="window.location.replace('signup.html')"><span>会员注册</span></a>
-                    <a class="resp-tab-item" onclick="window.location.replace('VIPSignIn.html')"><span>会员登陆</span></a>
-                    <a class="resp-tab-item" onclick="window.location.replace('VIPcenter.html')"><span>会员中心</span></a>
-				</ul>
-				<div class="clearfix"> </div>
-            </div>
-        </div>
+</div>
+<div class="content">
+    <div class="left">
+        <table>
+            <tr>
+                <td><a href="VIPInfo.html"><span>我的信息</span></a></td>
+            </tr>
+            <tr>
+                <td><a href="MyTicket.html"><span>我的订单</span></a></td>
+            </tr>
+            <tr>
+                <td><a href="{{ url('web.logout') }}"><span>退出登录</span></a></td>
+            </tr>
+        </table>
     </div>
+    <div class="right">
+        <table>
+            <tr>
+                <td>order_id</td>
+                <td>order_time</td>
+                <td>ticket_type</td>
+                <td>route</td>
+                <td>depart_time</td>
+                <td>status</td>
+            </tr>
 
-
-
-<script>
-    function AdminSignIn() {
-	    window.location.replace('AdminSignIn.html');
-
-    }
-</script>
+            {% for item in my_order %}
+                <tr>
+                <td>{{ item.order_id }}</td>
+                <td>{{ item.order_time }}</td>
+                <td>{{ item.ticket_type }}</td>
+                <td>{{ item.route }}</td>
+                 <td>{{ item.depart_time }}</td>
+                 <td>{{ item.status }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
 </body>
 </html>
-
-
-

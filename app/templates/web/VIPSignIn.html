@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SignIn</title>
+    <title>用户登录</title>
     <!--<link rel="stylesheet" href="../../static/style.css">-->
     <link rel="stylesheet" href="../../static/admin_style.css">
 </head>
@@ -18,7 +18,7 @@
     </div>
  </div>
 
-  <h1>管理员登录</h1>
+  <h1>用户登录</h1>
 	<div class="main-agileinfo">
 		<div class="sap_tabs">
 			<div id="horizontalTab">
@@ -41,6 +41,7 @@
                             </tr>
                         </table>
                         <input type="submit" value="登录">
+                        <input type="submit" value="注册" href="{{ url_for('web.register') }}">
                     </form>
                 </div>
 

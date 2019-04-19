@@ -228,3 +228,18 @@ input[type="submit"] {
     -o-transition: 0.5s all ease;
     -ms-transition: 0.5s all ease;
 }
+.signin2signup{
+    font-size: 14px;
+    color: #fff;
+    background:#ffc107;
+    border: none;
+    outline: none;
+    padding: 10px 15px;
+    margin-top: 50px;
+	cursor:pointer;
+	 transition: 0.5s all ease;
+    -webkit-transition: 0.5s all ease;
+    -moz-transition: 0.5s all ease;
+    -o-transition: 0.5s all ease;
+    -ms-transition: 0.5s all ease;
+}

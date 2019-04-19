@@ -2,9 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>用户中心</title>
+    <link rel="stylesheet" href="../../static/VIPstyle.css">
 </head>
 <body>
+<div class="VIPhead">
+    <h1>用户中心</h1>
+</div>
+<div class="VIPheadtitle">
+    <div class="menutap">
+        <ul class="menulist">
+            <a class="menu-tab-item" onclick="window.location.replace('../web/index.html')"><span>网站首页</span></a>
+            <a class="menu-tab-item" onclick="window.location.replace('../web/TicketSearch.html')"><span>机票查询</span></a>
+            <a class="menu-tab-item" onclick="window.location.replace('../web/SignUp.html')"><span>会员注册</span></a>
+            <a class="menu-tab-item" onclick="window.location.replace('../web/VIPSignIn.html')"><span>会员登陆</span></a>
+            <a class="menu-tab-item" onclick="window.location.replace('../web/VIPInfo.html')"><span>会员中心</span></a>
+        </ul>
+    </div>
+</div>
+<div class="content">
+    <div class="left">
+        <table>
+            <tr>
+                <td><a href="VIPInfo.html"><span>我的信息</span></a></td>
+            </tr>
+            <tr>
+                <td><a href="MyTicket.html"><span>我的订单</span></a></td>
+            </tr>
+            <tr>
+                <td><a href="{{ url('web.logout') }}"><span>退出登录</span></a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="right">
 
+    </div>
+</div>
 </body>
 </html>
