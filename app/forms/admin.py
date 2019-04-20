@@ -19,10 +19,10 @@ class AdminLoginForm(Form):
 
 
 class AddTicketForm(Form):
-    date_time = [(0, '全天'), (1, '07：00-23:59'), (2, '09：00-23:59'), (3, '11：00-23:59'), (4, '13：00-23:59'),
-                 (5, '15：00-23:59'), (6, '17：00-23:59'), (7, '19：00-23:59'), (8, '21：00-23:59'), (9, '23：00-23:59')]
-    cities = [('bj', '北京'), ('tj', '天津'), ('sh', '上海'), ('cq', '重庆'),
-              ('gz', '广州'), ('qd', '青岛'), ('hz', '杭州'), ('wh', '武汉')]
+    date_time = [('全天', '全天'), ('07：00-23:59', '07：00-23:59'), ('09：00-23:59', '09：00-23:59'), ('11：00-23:59', '11：00-23:59'), ('13：00-23:59', '13：00-23:59'),
+                 ('15：00-23:59', '15：00-23:59'), ('17：00-23:59', '17：00-23:59'), ('19：00-23:59', '19：00-23:59'), ('21：00-23:59', '21：00-23:59'), ('23：00-23:59', '23：00-23:59')]
+    cities = [('北京', '北京'), ('天津', '天津'), ('上海', '上海'), ('重庆', '重庆'),
+              ('广州', '广州'), ('青岛', '青岛'), ('杭州', '杭州'), ('武汉', '武汉')]
 
     id = HiddenField('id')
     submit = SubmitField('Submit')
@@ -54,7 +54,7 @@ class AddTicketForm(Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         # company选择内容从数据库读取
-        self.company_name.choices = [(c.id, c.company_name) for c in Company.query.all()]
+        self.company_name.choices = [(c.company_name, c.company_name) for c in Company.query.all()]
 
 
 class AddAdminForm(Form):

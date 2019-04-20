@@ -14,7 +14,7 @@ from sqlalchemy import Column, Integer, String, Boolean, Float
 from flask_login import UserMixin
 
 
-class Admin(UserMixin, Base):
+class Admin(Base):
     __tablename__ = 'admin'
     id = Column(Integer, primary_key=True)
     nickname = Column(String(24), nullable=False)
@@ -40,9 +40,9 @@ class Admin(UserMixin, Base):
             return True
 
 
-from app import login_manager
-
-
-@login_manager.user_loader
-def get_user(uid):
-    return Admin.query.get(int(uid))
+# from app import login_manager
+#
+#
+# @login_manager.user_loader
+# def get_user(uid):
+#     return Admin.query.get(int(uid))

@@ -21,11 +21,11 @@
  <h1>航空订票系统</h1>
 	<div class="main-agileinfo">
         <ul class="resp-tabs-list">
-            <a class="resp-tab-item" onclick="window.location.replace('web/index.html')"><span>网站首页</span></a>
-            <a class="resp-tab-item" onclick="window.location.replace('web/TicketSearch.html')"><span>机票查询</span></a>
-            <a class="resp-tab-item" onclick="window.location.replace('web/Signup.html')"><span>会员注册</span></a>
-            <a class="resp-tab-item" onclick="window.location.replace('web/VIPSignIn.html')"><span>会员登陆</span></a>
-            <a class="resp-tab-item" onclick="window.location.replace('web/VIPCenter.html')"><span>会员中心</span></a>
+             <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.index') }}')"><span>网站首页</span></a>
+            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.search') }}')"><span>机票查询</span></a>
+            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.register') }}')"><span>会员注册</span></a>
+            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.login') }}')"><span>会员登陆</span></a>
+            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.my_order') }}')"><span>会员中心</span></a>
         </ul>
         <div class="clearfix"> </div>
         <div class="resp-tabs-container">
@@ -68,7 +68,7 @@
                         <td>{{ item.depart_airport }}/{{ item.arrive_airport }}</td>
                         <td>{{ item.third_class_pric }}/{{ item.second_class_pric }}/{{ item.first_class_pric }}</td>
                         <td>{{ item.depart_city }}/{{ item.arrive_city }}</td>
-                        <td><a   href="{{ url_for('web.order',item.name) }}"><span>预订</span></a></td>
+                        <td><input type="submit" value="预订" href="{{ url_for('web.order',plain_id=item.name) }}"></td>
                     </tr>
                     {% endfor %}
                 </table>

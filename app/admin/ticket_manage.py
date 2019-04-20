@@ -7,7 +7,7 @@ from app.data.admin import CompanyInfo
 from app.data.order import ManageOrder
 from app.forms.admin import AddCompanyForm, AddTicketForm
 from app.forms.auth import RegisterForm, LoginForm, ChangeInfoForm
-from app.models.admin import Admin, get_user
+from app.models.user import  get_user
 from app.models.order import Order
 from app.models.ticket import Company, Ticket
 from . import admin
@@ -22,8 +22,7 @@ def test():
 @admin.route('/admin/company', methods=['GET', 'POST'])
 def company():
     form = AddCompanyForm(request.form)
-    Company.query().all()
-    companys = CompanyInfo(Company.query().all())
+    companys = CompanyInfo(Company.query.all()).companys
     if request.method == 'POST':  # and form.validate():
         with db.auto_commit():
             company = Company()

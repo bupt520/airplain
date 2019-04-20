@@ -26,8 +26,8 @@
             </div>
             <div class="admin_manage_content">
                 <ul class="admin_manage_list">
-                    <a class="admin_manage_item" href="{{ url_for('#') }}"><span>添加管理员</span></a>
-                    <a class="admin_manege_item" href="{{ url_for('#') }}"><span>管理员管理</span></a>
+                    <a class="admin_manage_item" href="{{ url_for('admin.add_admin') }}"><span>添加管理员</span></a>
+                    <a class="admin_manege_item" href="{{ url_for('admin.test') }}"><span>管理员管理</span></a>
                 </ul>
             </div>
         </div>
@@ -37,11 +37,11 @@
             </div>
             <div class="business_menu">
                 <ul class="business_menu_list">
-                    <a class="business_menu" href="{{ url_for('#') }}"><span>添加机票</span></a>
-                    <a class="business_menu" href="{{ url_for('#') }}"><span>航空公司管理</span></a>
-                    <a class="business_menu" href="{{ url_for('#') }}"><span>机票信息管理</span></a>
-                    <a class="business_menu" href="{{ url_for('#') }}"><span>航班信息查询</span></a>
-                    <a class="business_menu" href="{{ url_for('#') }}"><span>订票管理</span></a>
+                    <a class="business_menu" href="{{ url_for('admin.add_ticket') }}"><span>添加机票</span></a>
+                    <a class="business_menu" href="{{ url_for('admin.company') }}"><span>航空公司管理</span></a>
+                    <a class="business_menu" href="{{ url_for('admin.add_ticket') }}"><span>机票信息管理</span></a>
+                    <a class="business_menu" href="{{ url_for('admin.test') }}"><span>航班信息查询</span></a>
+                    <a class="business_menu" href="{{ url_for('admin.manage_order') }}"><span>订票管理</span></a>
                 </ul>
             </div>
         </div>
@@ -60,8 +60,8 @@
                 <tr>
                 <td>{{ item.En_name }}</td>
                 <td>{{ item.company_name }}</td>
-                <td> <a methods="delete" href="{{ url_for('admin.company', item.En_name) }}"><span>删除</span></a> </td>
-                <td> <a methods="put" href="{{ url_for('admin.company', item.En_name) }}"><span>修改</span></a> </td>
+                <td> <a methods="delete" href="{{ url_for('admin.company', company_name=item.En_name) }}"><span>删除</span></a> </td>
+                <td> <a methods="put" href="{{ url_for('admin.company', company_name=item.En_name) }}"><span>修改</span></a> </td>
                 </tr>
             {% endfor %}
 

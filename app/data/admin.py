@@ -29,11 +29,11 @@ class CompanyInfo():
         self.__parse()
 
     def __parse(self):
-        for admin in self.raw_company:
-            temp_admin = {}
-            temp_admin['company_name'] = admin.nickname
-            temp_admin['En_name'] = admin.role
-            self.companys.append(temp_admin)
+        for company in self.raw_company:
+            temp_company = {}
+            temp_company['company_name'] = company.company_name
+            temp_company['En_name'] = company.En_name
+            self.companys.append(temp_company)
 
             # company_name = Column(String(24), primary_key=True, nullable=False)
             # id = Column(Integer, autoincrement=True)
