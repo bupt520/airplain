@@ -68,7 +68,7 @@
                         <td>{{ item.depart_airport }}/{{ item.arrive_airport }}</td>
                         <td>{{ item.third_class_pric }}/{{ item.second_class_pric }}/{{ item.first_class_pric }}</td>
                         <td>{{ item.depart_city }}/{{ item.arrive_city }}</td>
-                        <td><input type="submit" value="预订" href="{{ url_for('web.order',item.name) }}"></td>
+                        <td><a   href="{{ url_for('web.order',item.name) }}"><span>预订</span></a></td>
                     </tr>
                     {% endfor %}
                 </table>
