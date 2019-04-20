@@ -6,7 +6,7 @@
 from app.data.admin import AdminInfo
 from app.forms.admin import AddAdminForm
 from app.forms.auth import RegisterForm, LoginForm, ChangeInfoForm
-from app.models.admin import Admin, get_user
+from app.models.admin import Admin
 from . import admin
 from flask import render_template, request, redirect, url_for, flash
 from app.models.base import db

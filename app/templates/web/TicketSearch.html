@@ -21,11 +21,11 @@
   <h1>机票查询</h1>
 	<div class="main-agileinfo">
         <ul class="resp-tabs-list">
-            <a class="resp-tab-item" onclick="window.location.replace('index.html')"><span>网站首页</span></a>
-            <a class="resp-tab-item" onclick="window.location.replace('ticketsearch.html')"><span>机票查询</span></a>
-            <a class="resp-tab-item" onclick="window.location.replace('signup.html')"><span>会员注册</span></a>
-            <a class="resp-tab-item" onclick="window.location.replace('VIPSignIn.html')"><span>会员登陆</span></a>
-            <a class="resp-tab-item" onclick="window.location.replace('VIPcenter.html')"><span>会员中心</span></a>
+            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.index') }}')"><span>网站首页</span></a>
+            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.search') }}')"><span>机票查询</span></a>
+            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.register') }}')"><span>会员注册</span></a>
+            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.login') }}')"><span>会员登陆</span></a>
+            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.my_order') }}')"><span>会员中心</span></a>
         </ul>
         <div class="clearfix"> </div>
         <div class="resp-tabs-container">
