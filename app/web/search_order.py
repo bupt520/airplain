@@ -83,6 +83,7 @@ def save_order():
 
 
 @web.route('/order/my')
+@login_required
 def my_order():
     user_id = current_user.id
     order = Order.query.filter_by(user_id=user_id).all()

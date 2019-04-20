@@ -7,7 +7,7 @@ from app.data.admin import CompanyInfo
 from app.data.order import ManageOrder
 from app.forms.admin import AddCompanyForm, AddTicketForm
 from app.forms.auth import RegisterForm, LoginForm, ChangeInfoForm
-from app.models.user import  get_user
+from app.models.user import get_user
 from app.models.order import Order
 from app.models.ticket import Company, Ticket
 from . import admin
@@ -15,9 +15,12 @@ from flask import render_template, request, redirect, url_for, flash
 from app.models.base import db
 from flask_login import login_user, logout_user, current_user
 
+
 @admin.route('/admin/test')
 def test():
     return 'test'
+
+
 # 请求和添加公司
 @admin.route('/admin/company', methods=['GET', 'POST'])
 def company():
@@ -34,7 +37,7 @@ def company():
 
 # 修改删除公司，先不写
 @admin.route('/admin/company/<company_name>', methods=['GET', 'POST'])
-def add_company(company_name):
+def change_company(company_name):
     form = AddCompanyForm(request.form)
     Company.query().all()
     if request.method == 'POST':  # and form.validate():
@@ -58,20 +61,25 @@ def add_ticket():
     return render_template('admin/TicketAdd.html', form=form)
 
 
-@admin.route('/admin/order/manage', methods=['GET', 'POST', 'DELETE'])
+@admin.route('/admin/order/manage', methods=['GET', 'POST'])
 def manage_order():
     order_id = request.args.get('order_id')
     if request.method == 'POST':  # and form.validate():
-        order = Order.query.filter_by(order_id).all()
+        order = Order.query.filter_by(order_id=order_id).first()
 
         with db.auto_commit():
             order.status = '已经处理'
             db.session.add(order)
             return redirect(url_for('admin.manage_order'))
-    if request.method == 'DELETE':
-        order = Order.query.filter_by(order_id).all()
+    orders = Order.query.all()
+    orders = ManageOrder(orders).order
+    return render_template('admin/OrderManage.html', orders=orders)
+
+
+@admin.route('/admin/order/dispose_order', methods=['POST'])
+def dispose_order():
+    order_id = request.args.get('order_id')
+    with db.auto_commit():
+        order = Order.query.filter_by(order_id=order_id).first()
         db.session.delete(order)
-        return redirect(url_for('admin.manage_order'))
-    order = Order.query.all()
-    order = ManageOrder(order).order
-    return render_template('admin/OrderManage.html', order=order)
+    return redirect(url_for('admin.manage_order'))

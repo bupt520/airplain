@@ -11,7 +11,7 @@ from app.models.user import User, get_user
 from . import web
 from flask import render_template, request, redirect, url_for, flash
 from app.models.base import db
-from flask_login import login_user, logout_user, current_user
+from flask_login import login_user, logout_user, current_user, login_required
 
 
 @web.route('/register', methods=['GET', 'POST'])
@@ -38,6 +38,7 @@ def login():
         if user and user.check_passward(form.password.data):
             login_user(user, remember=True)
             next = request.args.get('next')
+            print(next)
             if not next:  # or not next.startwith('/'):
                 next = url_for('web.index')
             return redirect(next)
@@ -47,31 +48,32 @@ def login():
 
 
 @web.route('/personalInfo', methods=['GET', 'POST'])
+@login_required
+
 def personal_info():
     form = ChangeInfoForm(request.form)
-    # 添加默认信息
-    # def register(email=None, password=None):
-    #     form = RegisterForm()
-    #     form.email.default = email
-    #     form.password.default = password
-    #     form.process()
-    #     ...
-    #     return render_template('auth/register.html', form=form)
+    if request.method == 'POST' and form.validate():
+        user = User.query.filter_by(nickname=form.nickname.data).first()
+        changed = user.change_info(form)
+        if changed:
+            return redirect(url_for('web.personal_info'))
     userid = current_user.id
     user = get_user(userid)
     form.nickname.default = user.nickname
     form.password.default = user.password
     form.name.default = user.name
     form.id_card.default = user.id_card
-    form.phone_number = user.phone_number
+    form.phone_number.default = user.phone_number
     form.process()
     # current_user._get_current_object()
 
     # user = User.query.filter_by(id=userid).first()
-    return render_template('web/MyTicket.html')
+    return render_template('web/VIPInfo.html', form=form)
 
 
 @web.route('/changeInfo', methods=['GET', 'POST'])
+@login_required
+
 def change_info():
     form = ChangeInfoForm(request.form)
     if request.method == 'POST' and form.validate():
@@ -118,6 +120,8 @@ def change_password():
 
 
 @web.route('/logout')
+@login_required
+
 def logout():
     logout_user()
     return redirect(url_for('web.index'))

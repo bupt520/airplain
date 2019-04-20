@@ -16,7 +16,7 @@
             <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.search') }}')"><span>机票查询</span></a>
             <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.register') }}')"><span>会员注册</span></a>
             <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.login') }}')"><span>会员登陆</span></a>
-            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.my_order') }}')"><span>会员中心</span></a>
+            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.personal_info') }}')"><span>会员中心</span></a>
         </ul>
     </div>
 </div>
@@ -26,7 +26,7 @@
             <div class="signupname">{{ form.nickname.label }}   {{ form.nickname }}</div>
             <div class="signuppwd">{{ form.password.label }}   {{ form.password }}</div>
             <div class="signuppwdrep">{{ form.repeat_password.label }}    {{ form.repeat_password }}</div>
-            <div class="signupname">{{ form.name.label }}   {{ form.name.label }}</div>
+            <div class="signupname">{{ form.name.label }}   {{ form.name }}</div>
             <div class="signupid">{{ form.id_card.label }}    {{ form.id_card }}</div>
             <div class="signupphone">{{ form.phone_number.label }}   {{ form.phone_number }}</div>
             <input type="submit" value="注册">

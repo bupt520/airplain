@@ -26,8 +26,8 @@
             </div>
             <div class="admin_manage_content">
                 <ul class="admin_manage_list">
-                    <a class="admin_manage_item" href="{{ url_for('#') }}"><span>添加管理员</span></a>
-                    <a class="admin_manege_item" href="{{ url_for('#') }}"><span>管理员管理</span></a>
+                    <a class="admin_manage_item" href="{{ url_for('admin.add_admin') }}"><span>添加管理员</span></a>
+                    <a class="admin_manege_item" href="{{ url_for('admin.admin_manage') }}"><span>管理员管理</span></a>
                 </ul>
             </div>
         </div>
@@ -37,11 +37,11 @@
             </div>
             <div class="business_menu">
                 <ul class="business_menu_list">
-                    <a class="business_menu" href="{{ url_for('#') }}"><span>添加机票</span></a>
-                    <a class="business_menu" href="{{ url_for('#') }}"><span>航空公司管理</span></a>
-                    <a class="business_menu" href="{{ url_for('#') }}"><span>机票信息管理</span></a>
-                    <a class="business_menu" href="{{ url_for('#') }}"><span>航班信息查询</span></a>
-                    <a class="business_menu" href="{{ url_for('#') }}"><span>订票管理</span></a>
+                    <a class="business_menu" href="{{ url_for('admin.add_ticket') }}"><span>添加机票</span></a>
+                    <a class="business_menu" href="{{ url_for('admin.company') }}"><span>航空公司管理</span></a>
+                    <a class="business_menu" href="{{ url_for('admin.test') }}"><span>机票信息管理</span></a>
+                    <a class="business_menu" href="{{ url_for('admin.test') }}"><span>航班信息查询</span></a>
+                    <a class="business_menu" href="{{ url_for('admin.manage_order') }}"><span>订票管理</span></a>
                 </ul>
             </div>
         </div>
@@ -73,8 +73,16 @@
                 <td>{{ item.name }}</td>
                 <td>{{ item.phone_number }}</td>
                 <td>{{ item.id_card }}</td>
-                <td><a methods="post" href="{{ url_for('admin.manage_order',order_id = item.order_id) }}"><span>确认</span></a></td>
-                <td><a methods="delete" href="{{ url_for('admin.manage_order',item.order_id) }}"><span>删除</span></a></td>
+                <td>{{ item.status }}</td>
+                <td><form action="{{ url_for('admin.manage_order',order_id = item.order_id) }}" method="post">
+                <input type="submit" value="确认">
+                </form></td>
+                <td><form action="{{ url_for('admin.dispose_order',order_id = item.order_id) }}" method="post">
+                <input type="submit" value="删除">
+                </form></td>
+
+{#                <td><a method="post" href="{{ url_for('admin.manage_order',order_id = item.order_id) }}"><span>确认</span></a></td>#}
+{#                <td><a method="delete" href="{{ url_for('admin.manage_order',order_id=item.order_id) }}"><span>删除</span></a></td>#}
                 </tr>
             {% endfor %}
 

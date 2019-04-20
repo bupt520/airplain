@@ -33,7 +33,7 @@ class ManageOrder():
     def __parse(self):
         for order in self.raw_order:
             user_id = order.user_id
-            user = User.query.filter_by(user_id).first()
+            user = User.query.filter_by(id=user_id).first()
             temp_order = {}
             temp_order['order_id'] = order.order_id
             temp_order['order_time'] = order.create_datetime
@@ -41,7 +41,7 @@ class ManageOrder():
             temp_order['route'] = order.route
             temp_order['depart_time'] = order.depart_time
             temp_order['status'] = order.status
-            # temp_order['user_name']=user.nickname
-            temp_order['user_name'] = order.user_of_order[0].nickname
+            temp_order['user_name']=user.nickname
+            # temp_order['user_name'] = order.user_of_order[0].nickname
 
             self.order.append(temp_order)

@@ -16,7 +16,7 @@
             <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.search') }}')"><span>机票查询</span></a>
             <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.register') }}')"><span>会员注册</span></a>
             <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.login') }}')"><span>会员登陆</span></a>
-            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.my_order') }}')"><span>会员中心</span></a>
+            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.personal_info') }}')"><span>会员中心</span></a>
         </ul>
     </div>
 </div>
@@ -24,13 +24,13 @@
     <div class="left">
         <table>
             <tr>
-                <td><a href="VIPInfo.html"><span>我的信息</span></a></td>
+                <td><a href="{{ url_for('web.personal_info') }}"><span>我的信息</span></a></td>
             </tr>
             <tr>
-                <td><a href="MyTicket.html"><span>我的订单</span></a></td>
+                <td><a href="{{ url_for('web.my_order') }}"><span>我的订单</span></a></td>
             </tr>
             <tr>
-                <td><a href="{{ url('web.logout') }}"><span>退出登录</span></a></td>
+                <td><a href="{{ url_for('web.logout') }}"><span>退出登录</span></a></td>
             </tr>
         </table>
     </div>
@@ -38,7 +38,18 @@
 
     </div>
 </div>
-
+<div class="content">
+    <div class="signupform">
+        <form action="{{ url_for('web.personal_info') }}" method="post" style="text-align: center">
+            <div class="signupname">{{ form.nickname.label }}   {{ form.nickname }}</div>
+            <div class="signuppwd">{{ form.password.label }}   {{ form.password }}</div>
+            <div class="signupname">{{ form.name.label }}   {{ form.name }}</div>
+            <div class="signupid">{{ form.id_card.label }}    {{ form.id_card }}</div>
+            <div class="signupphone">{{ form.phone_number.label }}   {{ form.phone_number }}</div>
+            <input type="submit" value="修改">
+        </form>
+    </div>
+</div>
 <script>
     function AdminSignIn() {
 	    window.location.replace('{{ url_for('admin.login') }}');

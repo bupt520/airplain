@@ -25,7 +25,7 @@
             <a class="resp-tab-item" onclick="window.location.replace('{{ url_for('web.search') }}')"><span>机票查询</span></a>
             <a class="resp-tab-item" onclick="window.location.replace('{{ url_for('web.register') }}')"><span>会员注册</span></a>
             <a class="resp-tab-item" onclick="window.location.replace('{{ url_for('web.login') }}')"><span>会员登陆</span></a>
-            <a class="resp-tab-item" onclick="window.location.replace('{{ url_for('web.my_order') }}')"><span>会员中心</span></a>
+            <a class="resp-tab-item" onclick="window.location.replace('{{ url_for('web.personal_info') }}')"><span>会员中心</span></a>
         </ul>
         <div class="clearfix"> </div>
         <div class="resp-tabs-container">
@@ -52,6 +52,8 @@
                 </form>
             </div>
             <div class="SearchResultResults" style="text-align: center">
+                {% if tickets %}
+
                 <table class="resulttables" style="margin: 0px auto">
                     <tr class="airinfo">
                         <td>航班信息/机型</td>
@@ -61,6 +63,7 @@
                         <td>起点终点</td>
                         <td>预订</td>
                     </tr>
+
                     {% for item in tickets %}
                     <tr>
                         <td>{{ item.name }}</td>
@@ -68,10 +71,15 @@
                         <td>{{ item.depart_airport }}/{{ item.arrive_airport }}</td>
                         <td>{{ item.third_class_pric }}/{{ item.second_class_pric }}/{{ item.first_class_pric }}</td>
                         <td>{{ item.depart_city }}/{{ item.arrive_city }}</td>
-                        <td><input type="submit" value="预订" href="{{ url_for('web.order',plain_id=item.name) }}"></td>
+{#                        <td><input type="button" value="预订" href="{{ url_for('web.order',plain_id=item.name) }}"></td>#}
+                        <td><input type="submit" value="预订" onclick="javascrtpt:window.location.href='{{ url_for('web.order',plain_id=item.name) }}'"><td>
+
                     </tr>
                     {% endfor %}
+
                 </table>
+                {% endif %}
+
             </div>
         </div>
     </div>

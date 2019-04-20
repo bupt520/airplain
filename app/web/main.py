@@ -17,8 +17,3 @@ def index():
     form.single_double.default = '往返'
     form.process()
     return render_template('web/index.html', form=form)
-
-
-@web.route('/personal')
-def personal_center():
-    pass

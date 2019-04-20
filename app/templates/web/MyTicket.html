@@ -16,7 +16,7 @@
             <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.search') }}')"><span>机票查询</span></a>
             <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.register') }}')"><span>会员注册</span></a>
             <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.login') }}')"><span>会员登陆</span></a>
-            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.my_order') }}')"><span>会员中心</span></a>
+            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.personal_info') }}')"><span>会员中心</span></a>
         </ul>
     </div>
 </div>
@@ -24,10 +24,10 @@
     <div class="left">
         <table>
             <tr>
-                <td><a href="VIPInfo.html"><span>我的信息</span></a></td>
+                <td><a href="{{ url_for('web.personal_info') }}"><span>我的信息</span></a></td>
             </tr>
             <tr>
-                <td><a href="MyTicket.html"><span>我的订单</span></a></td>
+                <td><a href="{{ url_for('web.my_order') }}"><span>我的订单</span></a></td>
             </tr>
             <tr>
                 <td><a href="{{ url_for('web.logout') }}"><span>退出登录</span></a></td>
