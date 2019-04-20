@@ -17,16 +17,13 @@ from flask_login import login_user, logout_user, current_user, login_required
 @web.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm(request.form)
-    print(form.data, '#' * 100)
-    if request.method == 'POST' and form.validate():
+    if request.method == 'POST':# and form.validate():
         with db.auto_commit():
             user = User()
             user.set_attrs(form.data)
             # user=user.create_user(form)
             db.session.add(user)
-            return 'True'
-    # return ('False')
-    #     return redirect(url_for('web.login'))
+            return redirect(url_for('web.login'))
     return render_template('web/SignUp.html', form=form)
 
 
