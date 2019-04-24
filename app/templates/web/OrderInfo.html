@@ -22,12 +22,38 @@
          <div class="resp-tabs-container">
              <div class="orderform" style="text-align: center">
                  <form action="{{ url_for('web.save_order') }}" method="post">
-                     <div class="orderlabel">{{ form.order_id.label }}  {{ form.order_id }}</div>
-                     <div class="ordertickettype">{{ form.ticket_type.label }}   {{ form.ticket_type }}</div>
-                     <div class="orderdeparttime">{{ form.depart_time.label }}   {{ form.depart_time }}</div>
-                     <div class="orderroute">{{ form.route.label }}     {{ form.route }}</div>
-                     <div class="orderphone">{{ form.phone_number.label }}  {{ form.phone_number }}</div>
-                     <div class="orderid">{{ form.id_card.label }}   {{ form.id_card }}</div>
+                     <table style="margin: 10px">
+                         <tr style="height: 30px">
+                             <td>{{ form.order_id.label }}</td>
+                             <td>{{ form.order_id }}</td>
+                         </tr>
+                         <tr style="height: 30px">
+                             <td>{{ form.ticket_type.label }}</td>
+                             <td>{{ form.ticket_type }}</td>
+                         </tr>
+                         <tr style="height: 30px">
+                             <td>{{ form.depart_time.label }}</td>
+                             <td>{{ form.depart_time }}</td>
+                         </tr>
+                         <tr style="height: 30px">
+                             <td>{{ form.route.label }}</td>
+                             <td>{{ form.route }}</td>
+                         </tr>
+                         <tr style="height: 30px">
+                             <td>{{ form.phone_number.label }}</td>
+                             <td>{{ form.phone_number }}</td>
+                         </tr>
+                         <tr style="height: 30px">
+                             <td>{{ form.id_card.label }}</td>
+                             <td>{{ form.id_card }}</td>
+                         </tr>
+                     </table>
+{#                     <div class="orderlabel">{{ form.order_id.label }}  {{ form.order_id }}</div>#}
+{#                     <div class="ordertickettype">{{ form.ticket_type.label }}   {{ form.ticket_type }}</div>#}
+{#                     <div class="orderdeparttime">{{ form.depart_time.label }}   {{ form.depart_time }}</div>#}
+{#                     <div class="orderroute">{{ form.route.label }}     {{ form.route }}</div>#}
+{#                     <div class="orderphone">{{ form.phone_number.label }}  {{ form.phone_number }}</div>#}
+{#                     <div class="orderid">{{ form.id_card.label }}   {{ form.id_card }}</div>#}
                      <input type="submit" value="确认订单">
                  </form>
              </div>

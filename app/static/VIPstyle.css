@@ -75,19 +75,22 @@ h1{
 }
 
 .content{
-	background: rgba(3, 3, 3, 0.57);
-	padding: 0px;
-	clear: left;
+
 }
 .left{
 	margin: 0px auto;
-	width: 20%;
+	width: 15%;
 	float: left;
+	height: 1000px;
+	background: rgba(100,100,100,0.8);
 }
 .right{
 	margin: 0px auto;
-	width: 80%;
+	width: 85%;
 	float: right;
+	background: rgba(3, 3, 3, 0.57);
+	padding: 0px;
+	height: 1000px;
 }
 .signupform{
 	margin: 0px auto;
@@ -112,4 +115,10 @@ input[type="submit"] {
 input[type="submit"]:hover  {
     background:#212121;
 	color:#fff;
+}
+
+h3 {
+    font-size: 16px;
+    color:#FFC107;
+    margin-bottom: 7px;
 }

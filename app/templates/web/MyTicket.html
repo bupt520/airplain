@@ -22,7 +22,7 @@
 </div>
 <div class="content">
     <div class="left">
-        <table>
+        <table style="width: 100%">
             <tr>
                 <td><a href="{{ url_for('web.personal_info') }}"><span>我的信息</span></a></td>
             </tr>
@@ -35,8 +35,8 @@
         </table>
     </div>
     <div class="right">
-        <table>
-            <tr>
+        <table style="margin: 10px;color: #E5E5E5;width: 60%">
+            <tr style="height: 30px">
                 <td>order_id</td>
                 <td>order_time</td>
                 <td>ticket_type</td>
@@ -46,7 +46,7 @@
             </tr>
 
             {% for item in my_order %}
-                <tr>
+                <tr style="height: 30px">
                 <td>{{ item.order_id }}</td>
                 <td>{{ item.order_time }}</td>
                 <td>{{ item.ticket_type }}</td>

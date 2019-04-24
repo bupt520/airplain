@@ -20,8 +20,7 @@
         </ul>
     </div>
 </div>
-<div class="content">
-    <div class="left">
+<div class="left">
         <table>
             <tr>
                 <td><a href="{{ url_for('web.personal_info') }}"><span>我的信息</span></a></td>
@@ -34,22 +33,43 @@
             </tr>
         </table>
     </div>
-    <div class="right">
-
-    </div>
-</div>
-<div class="content">
+<div class="right">
+    <h3>我的信息</h3>
     <div class="signupform">
-        <form action="{{ url_for('web.personal_info') }}" method="post" style="text-align: center">
-            <div class="signupname">{{ form.nickname.label }}   {{ form.nickname }}</div>
-            <div class="signuppwd">{{ form.password.label }}   {{ form.password }}</div>
-            <div class="signupname">{{ form.name.label }}   {{ form.name }}</div>
-            <div class="signupid">{{ form.id_card.label }}    {{ form.id_card }}</div>
-            <div class="signupphone">{{ form.phone_number.label }}   {{ form.phone_number }}</div>
+        <form action="{{ url_for('web.personal_info') }}" method="post" style="margin: 10px">
+            <table style="margin: 10px;width: 40%">
+                <tr style="height: 30px">
+                    <td>{{ form.nickname.label }}</td>
+                    <td>{{ form.nickname }}</td>
+                </tr>
+                <tr style="height: 30px">
+                    <td>{{ form.password.label }}</td>
+                    <td>{{ form.password }}</td>
+                </tr>
+                <tr style="height: 30px">
+                    <td>{{ form.name.label }}</td>
+                    <td>{{ form.name }}</td>
+                </tr>
+                <tr style="height: 30px">
+                    <td>{{ form.id_card.label }} </td>
+                    <td>{{ form.id_card }}</td>
+                </tr>
+                <tr style="height: 30px">
+                    <td>{{ form.phone_number.label }}</td>
+                    <td> {{ form.phone_number }}</td>
+                </tr>
+            </table>
+{#            <div class="signupname">{{ form.nickname.label }}   {{ form.nickname }}</div>#}
+{#            <div class="signuppwd">{{ form.password.label }}   {{ form.password }}</div>#}
+{#            <div class="signupname">{{ form.name.label }}   {{ form.name }}</div>#}
+{#            <div class="signupid">{{ form.id_card.label }}    {{ form.id_card }}</div>#}
+{#            <div class="signupphone">{{ form.phone_number.label }}   {{ form.phone_number }}</div>#}
             <input type="submit" value="修改">
         </form>
     </div>
 </div>
+
+
 <script>
     function AdminSignIn() {
 	    window.location.replace('{{ url_for('admin.login') }}');

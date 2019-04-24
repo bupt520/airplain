@@ -134,17 +134,17 @@ h3 {
 }
 
 .single_double{
-	width:15%;
+	width:100%;
 	float: left;
 }
-.from,.to,.date,.depart,.return{
+.from,.to,.return{
 	width:48%;
 	float:right;
 }
-.from,.to,.date{
+.from,.to{
 	margin-bottom:40px;
 }
-.from,.date,.depart{
+.from,.date{
 	margin-right:4%;
 }
 

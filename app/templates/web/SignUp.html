@@ -23,12 +23,38 @@
 <div class="content">
     <div class="signupform">
         <form action="{{ url_for('web.register') }}" method="post" style="text-align: center">
-            <div class="signupname">{{ form.nickname.label }}   {{ form.nickname }}</div>
-            <div class="signuppwd">{{ form.password.label }}   {{ form.password }}</div>
-            <div class="signuppwdrep">{{ form.repeat_password.label }}    {{ form.repeat_password }}</div>
-            <div class="signupname">{{ form.name.label }}   {{ form.name }}</div>
-            <div class="signupid">{{ form.id_card.label }}    {{ form.id_card }}</div>
-            <div class="signupphone">{{ form.phone_number.label }}   {{ form.phone_number }}</div>
+            <table style="margin: auto;width: 60%">
+                <tr style="height: 30px">
+                    <td>{{ form.nickname.label(style="width:100px") }}</td>
+                    <td>{{ form.nickname(style="width:300px;height:20px") }}</td>
+                </tr>
+                <tr style="height: 30px">
+                    <td>{{ form.password.label }}</td>
+                    <td>{{ form.password(style="width:300px;height:20px") }}</td>
+                </tr>
+                <tr style="height: 30px">
+                    <td>{{ form.repeat_password.label }}</td>
+                    <td> {{ form.repeat_password(style="width:300px;height:20px") }}</td>
+                </tr>
+                <tr style="height: 30px">
+                    <td>{{ form.name.label }}</td>
+                    <td>{{ form.name(style="width:300px;height:20px") }}</td>
+                </tr>
+                <tr style="height: 30px">
+                    <td>{{ form.id_card.label }}</td>
+                    <td>{{ form.id_card(style="width:300px;height:20px") }}</td>
+                </tr>
+                <tr style="height: 30px">
+                    <td>{{ form.phone_number.label }}</td>
+                    <td>{{ form.phone_number(style="width:300px;height:20px") }}</td>
+                </tr>
+            </table>
+{#            <div class="signupname">{{ form.nickname.label }}   {{ form.nickname }}</div>#}
+{#            <div class="signuppwd">{{ form.password.label }}   {{ form.password }}</div>#}
+{#            <div class="signuppwdrep">{{ form.repeat_password.label }}    {{ form.repeat_password }}</div>#}
+{#            <div class="signupname">{{ form.name.label }}   {{ form.name }}</div>#}
+{#            <div class="signupid">{{ form.id_card.label }}    {{ form.id_card }}</div>#}
+{#            <div class="signupphone">{{ form.phone_number.label }}   {{ form.phone_number }}</div>#}
             <input type="submit" value="注册">
         </form>
     </div>

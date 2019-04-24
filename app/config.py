@@ -4,8 +4,7 @@
 # Date:         2019/4/9
 # -------------------------------------------------------------------------------
 DEBUG = True
-SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:mysql123@localhost:3306/airplain'
-# SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://用户名:密码@localhost:3306/airplain'
+SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:sun196130@localhost:3306/airplain'
 
 SECRET_KEY = 'aqwrgsrtkj65476riqw34tare'
 

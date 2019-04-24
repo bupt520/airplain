@@ -27,33 +27,64 @@
             <a class="resp-tab-item" onclick="window.location.replace('{{ url_for('web.login') }}')"><span>会员登陆</span></a>
             <a class="resp-tab-item" onclick="window.location.replace('{{ url_for('web.personal_info') }}')"><span>会员中心</span></a>
         </ul>
-        <div class="clearfix"> </div>
+        <div class="clearfix"></div>
         <div class="resp-tabs-container">
-            <div class="SearchResultSearch">
-                <form action="{{ url_for('web.search') }}" method="post">
+{#            <div class="tab-1 resp-tab-content roundtrip">#}
+                <form action="{{url_for('web.search')}}" method="post">
                     <div class="single_double">
-                        {{form.single_double}}
+                        <h3>{{ form.single_double.label }}</h3>
+                        {{ form.single_double }}
+
                     </div>
-                    <div class="infocities">
-                        <h5>{{form.depart_city.label}}</h5>
-                        {{form.depart_city}}
-                        <h5>{{form.arrive_city.label}}</h5>
-                        {{form.arrive_city}}
+                    <div class="from">
+                        <h3>{{ form.depart_city.label}}</h3>
+                        {{form.depart_city(style="width:200px")}}
                     </div>
-                    <div class="infodate">
-                        <h5>{{form.depart_date.label}}</h5>
-                        {{form.depart_date}}
-                        <h5>{{form.return_date.label}}</h5>
-                        {{form.return_date}}
+                    <div class="to">
+                        <h3>{{form.arrive_city.label}}</h3>
+                        {{form.arrive_city(style="width:200px")}}
                     </div>
-                    <div class="infosubmit">
-                        <input type="submit" value="搜索航班">
+                    <div class="clear"></div>
+                    <div class="date">
+                        <div class="depart">
+                            <h3>{{form.depart_date.label}}</h3>
+                            {{form.depart_date(id="datepicker",onfocus="this.value = '';",onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}",required="",style="width:400px")}}
+                            <span class="checkbox1">
+                                <label class="checkbox"><input type="checkbox" name="" checked=""><i> </i>Flexible with date</label>
+                            </span>
+                        </div>
+                        <div class="clear"></div>
                     </div>
+                    <div class="clear"></div>
+                    <input type="submit" value="搜索航班">
                 </form>
             </div>
+{#    </div>#}
+{#        </div>#}
+{#            <div class="SearchResultSearch">#}
+{#                <form action="{{ url_for('web.search') }}" method="post">#}
+{#                    <div class="single_double">#}
+{#                        {{form.single_double}}#}
+{#                    </div>#}
+{#                    <div class="infocities">#}
+{#                        <h5>{{form.depart_city.label}}</h5>#}
+{#                        {{form.depart_city}}#}
+{#                        <h5>{{form.arrive_city.label}}</h5>#}
+{#                        {{form.arrive_city}}#}
+{#                    </div>#}
+{#                    <div class="infodate">#}
+{#                        <h5>{{form.depart_date.label}}</h5>#}
+{#                        {{form.depart_date}}#}
+{#                        <h5>{{form.return_date.label}}</h5>#}
+{#                        {{form.return_date}}#}
+{#                    </div>#}
+{#                    <div class="infosubmit">#}
+{#                        <input type="submit" value="搜索航班">#}
+{#                    </div>#}
+{#                </form>#}
+{#            </div>#}
             <div class="SearchResultResults" style="text-align: center">
                 {% if tickets %}
-
                 <table class="resulttables" style="margin: 0px auto">
                     <tr class="airinfo">
                         <td>航班信息/机型</td>
@@ -63,7 +94,6 @@
                         <td>起点终点</td>
                         <td>预订</td>
                     </tr>
-
                     {% for item in tickets %}
                     <tr>
                         <td>{{ item.name }}</td>
@@ -71,7 +101,7 @@
                         <td>{{ item.depart_airport }}/{{ item.arrive_airport }}</td>
                         <td>{{ item.third_class_pric }}/{{ item.second_class_pric }}/{{ item.first_class_pric }}</td>
                         <td>{{ item.depart_city }}/{{ item.arrive_city }}</td>
-{#                        <td><input type="button" value="预订" href="{{ url_for('web.order',plain_id=item.name) }}"></td>#}
+                        <td><input type="button" value="预订" href="{{ url_for('web.order',plain_id=item.name) }}"></td>
                         <td><input type="submit" value="预订" onclick="javascrtpt:window.location.href='{{ url_for('web.order',plain_id=item.name) }}'"><td>
 
                     </tr>
@@ -83,6 +113,55 @@
             </div>
         </div>
     </div>
+  <!--script for portfolio-->
+  <script src="../../static/jquery.min.js"> </script>
+  <script src="../../static/easyResponsiveTabs.js" type="text/javascript"></script>
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $('#horizontalTab').easyResponsiveTabs({
+              type: 'default', //Types: default, vertical, accordion
+              width: 'auto', //auto or any width like 600px
+              fit: true   // 100% fit in a container
+          });
+      });
+  </script>
+
+  <link rel="stylesheet" href="../../static/jquery-ui.css" />
+  <script src="../../static/jquery-ui.js"></script>
+  <
+  <script>
+      $(function() {
+          $( "#datepicker,#datepicker1,#datepicker2,#datepicker3" ).datepicker();
+      });
+  </script>
+
+  <script>
+      $('.value-plus').on('click', function(){
+          var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)+1;
+          divUpd.text(newVal);
+      });
+
+      $('.value-minus').on('click', function(){
+          var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)-1;
+          if(newVal>=1) divUpd.text(newVal);
+      });
+  </script>
+
+  <script>
+	$(document).ready(function () {
+		size_li = $("#myList li").size();
+		x=1;
+		$('#myList li:lt('+x+')').show();
+		$('#loadMore').click(function () {
+			x= (x+1 <= size_li) ? x+1 : size_li;
+			$('#myList li:lt('+x+')').show();
+		});
+		$('#showLess').click(function () {
+			x=(x-1<0) ? 1 : x-1;
+			$('#myList li').not(':lt('+x+')').hide();
+		});
+	});
+</script>
 
 <script>
     function AdminSignIn() {
@@ -90,7 +169,7 @@
 
     }
 </script>
-
+<!-- //load-more -->
 
 </body>
 </html>
