@@ -34,11 +34,11 @@ class AddTicketForm(Form):
     depart_city = SelectField("出发城市", choices=cities, validators=[DataRequired(), Length(2, 10)])
     arrive_city = SelectField("到达城市", choices=cities, validators=[DataRequired(), Length(2, 10)])
 
-    depart_date = DateField(label='出发日期', format='%Y-%m-%d')
+    depart_date = DateField(label='出发日期', format='%m/%d/%Y')
     depart_time = SelectField('出发时间', choices=date_time)
-    arrive_date = DateField(label='到达时期', format='%Y-%m-%d')
+    arrive_date = DateField(label='到达时期', format='%m/%d/%Y')
     arrive_time = SelectField('到达时间', choices=date_time)
-    return_date = DateField(label='返程日期', format='%Y-%m-%d')
+    return_date = DateField(label='返程日期', format='%m/%d/%Y')
     return_time = SelectField('返程时间', choices=date_time)
 
     first_class_price = IntegerField('头等舱价格')
