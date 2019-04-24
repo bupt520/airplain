@@ -18,12 +18,12 @@ class Admin(Base):
     __tablename__ = 'admin'
     id = Column(Integer, primary_key=True)
     nickname = Column(String(24), nullable=False)
-    role = Column(String(24), nullable=False, default='super')
-    _password = Column('password', String(128), nullable=False)
+    role = Column(String(24), nullable=False, default='超级管理员')
+    password = Column('password', String(128), nullable=False)
 
     @property
     def password(self):
-        return self._password
+        return self.password
 
     @password.setter
     def password(self, raw):

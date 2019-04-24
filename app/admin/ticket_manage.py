@@ -3,17 +3,15 @@
 # Name:         ticket_manage
 # Date:         2019/4/12
 # -------------------------------------------------------------------------------
+from flask import render_template, request, redirect, url_for
+
 from app.data.admin import CompanyInfo
 from app.data.order import ManageOrder
 from app.forms.admin import AddCompanyForm, AddTicketForm
-from app.forms.auth import RegisterForm, LoginForm, ChangeInfoForm
-from app.models.user import get_user
+from app.models.base import db
 from app.models.order import Order
 from app.models.ticket import Company, Ticket
 from . import admin
-from flask import render_template, request, redirect, url_for, flash
-from app.models.base import db
-from flask_login import login_user, logout_user, current_user
 
 
 @admin.route('/admin/test')
@@ -35,7 +33,7 @@ def company():
     return render_template('admin/CompanyManage.html', form=form, companys=companys)
 
 
-# 修改删除公司，先不写
+# 修改删除公司
 @admin.route('/admin/company/<company_name>', methods=['GET', 'POST'])
 def change_company(company_name):
     form = AddCompanyForm(request.form)
@@ -49,6 +47,7 @@ def change_company(company_name):
             # return redirect(url_for('web.login'))
 
 
+# 添加机票
 @admin.route('/admin/ticket', methods=['GET', 'POST'])
 def add_ticket():
     form = AddTicketForm(request.form)

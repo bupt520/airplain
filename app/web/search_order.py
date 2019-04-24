@@ -5,28 +5,16 @@
 # -------------------------------------------------------------------------------
 from datetime import datetime
 
-from flask.json import jsonify
+from flask import render_template, request, redirect, url_for
+from flask_login import current_user, login_required
 
 from app.data.order import MyOrder
 from app.data.ticket import SearchTicket
-from app.forms.auth import RegisterForm, LoginForm, ChangeInfoForm
 from app.forms.search_order import SearchForm, OrderForm
+from app.models.base import db
 from app.models.order import Order
 from app.models.ticket import Ticket
-from app.models.user import User, get_user
 from . import web
-from flask import render_template, request, redirect, url_for, flash
-from app.models.base import db
-from flask_login import login_user, logout_user, current_user, login_required
-
-
-# tickets = [
-#     {'name': '502次航班', 'company': '中国东方航空公司', 'depart_date_time': '2019-1-1 全天', 'arrive_date_time': '2019-1-1 12:00',
-#      'depart_airport': '北京', 'arrive_airport': '重庆', 'third_class_pric': '经济舱：1元', 'second_class_pric': '商务舱：2元',
-#      'first_class_pric': '头等舱：3元', 'depart_city': '北京', 'arrive_city': '重庆'},
-#     {'name': '1', 'company': '中国东方航空公司', 'depart_date_time': '2019-1-1 全天', 'arrive_date_time': '2019-1-1 12:00',
-#      'depart_airport': '北京', 'arrive_airport': '重庆', 'third_class_pric': '经济舱：1元', 'second_class_pric': '商务舱：2元',
-#      'first_class_pric': '头等舱：3元', 'depart_city': '北京', 'arrive_city': '重庆'}]
 
 
 @web.route('/search', methods=['GET', 'POST'])
@@ -41,7 +29,7 @@ def search():
 
     form.single_double.default = '往返'
     form.process()
-    return render_template('web/SearchResults.html', form=form,tickets=[])
+    return render_template('web/SearchResults.html', form=form, tickets=[])
 
 
 @web.route('/order/<plain_id>')
@@ -74,10 +62,6 @@ def save_order():
             order.user_id = current_user.id
             order.status = '正在处理'
 
-            # order.order_id = form.order_id
-            # order.ticket_type = form.ticket_type.data
-            # order.route = form.route.data
-
             db.session.add(order)
             return redirect(url_for('web.my_order'))
 
@@ -90,23 +74,3 @@ def my_order():
 
     my_order = MyOrder(order).order
     return render_template('web/MyTicket.html', my_order=my_order)
-
-
-# @web.route('/personalInfo', methods=['GET', 'POST'])
-# def personal_info():
-#     userid = current_user.id
-#     user = get_user(userid)
-#     # user = User.query.filter_by(id=userid).first()
-#     return user.nickname
-#
-#
-# @web.route('/changeInfo', methods=['GET', 'POST'])
-# def change_info():
-#     form = ChangeInfoForm(request.form)
-#     if request.method == 'POST' and form.validate():
-#         user = User.query.filter_by(nickname=form.nickname.data).first()
-#         changed = user.change_info(form)
-#
-#         if changed:
-#             return '用户信息更改成功'
-#     return redirect(url_for('web.personal_info'))
