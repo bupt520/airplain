@@ -18,30 +18,30 @@
 <div class="left">
     <div class="left-menu">
         <div class="h5head">
-            <h5>管理菜单</h5>
+            <h2>管理菜单</h2>
         </div>
         <div class="admin_manage">
-            <div class="h6head">
-                <h6>管理员管理</h6>
+            <div class="h3head">
+                <h3>管理员管理</h3>
             </div>
             <div class="admin_manage_content">
                 <ul class="admin_manage_list">
                     <a class="admin_manage_item" href="{{ url_for('admin.add_admin') }}"><span>添加管理员</span></a>
-                    <a class="admin_manege_item" href="{{ url_for('admin.admin_manage') }}"><span>管理员管理</span></a>
+                    <a class="admin_manage_item" href="{{ url_for('admin.admin_manage') }}"><span>管理员管理</span></a>
                 </ul>
             </div>
         </div>
         <div class="business_manage">
             <div class="h6head">
-                <h6>机票管理</h6>
+                <h3>机票管理</h3>
             </div>
             <div class="business_menu">
                 <ul class="business_menu_list">
-                    <a class="business_menu" href="{{ url_for('admin.add_ticket') }}"><span>添加机票</span></a>
-                    <a class="business_menu" href="{{ url_for('admin.company') }}"><span>航空公司管理</span></a>
-                    <a class="business_menu" href="{{ url_for('admin.test') }}"><span>机票信息管理</span></a>
-                    <a class="business_menu" href="{{ url_for('admin.test') }}"><span>航班信息查询</span></a>
-                    <a class="business_menu" href="{{ url_for('admin.manage_order') }}"><span>订票管理</span></a>
+                    <a class="business_menu_item" href="{{ url_for('admin.add_ticket') }}"><span>添加机票</span></a>
+                    <a class="business_menu_item" href="{{ url_for('admin.company') }}"><span>航空公司管理</span></a>
+{#                    <a class="business_menu_item" href="{{ url_for('admin.test') }}"><span>机票信息管理</span></a>#}
+{#                    <a class="business_menu_item" href="{{ url_for('admin.test') }}"><span>航班信息查询</span></a>#}
+                    <a class="business_menu_item" href="{{ url_for('admin.manage_order') }}"><span>订票管理</span></a>
                 </ul>
             </div>
         </div>
@@ -52,7 +52,7 @@
         <h3>订单管理</h3>
     </div>
     <div class="ticke_order_req">
-        <table>
+        <table  style="margin: 10px;width: 70%">
             <tr>
                 <td> 订单编号 </td>
                 <td> 订单路线 </td>

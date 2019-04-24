@@ -18,30 +18,30 @@
 <div class="left">
     <div class="left-menu">
         <div class="h5head">
-            <h5>管理菜单</h5>
+            <h2>管理菜单</h2>
         </div>
         <div class="admin_manage">
-            <div class="h6head">
-                <h6>管理员管理</h6>
+            <div class="h3head">
+                <h3>管理员管理</h3>
             </div>
             <div class="admin_manage_content">
                 <ul class="admin_manage_list">
                     <a class="admin_manage_item" href="{{ url_for('admin.add_admin') }}"><span>添加管理员</span></a>
-                    <a class="admin_manege_item" href="{{ url_for('admin.test') }}"><span>管理员管理</span></a>
+                    <a class="admin_manage_item" href="{{ url_for('admin.admin_manage') }}"><span>管理员管理</span></a>
                 </ul>
             </div>
         </div>
         <div class="business_manage">
             <div class="h6head">
-                <h6>机票管理</h6>
+                <h3>机票管理</h3>
             </div>
             <div class="business_menu">
                 <ul class="business_menu_list">
-                    <a class="business_menu" href="{{ url_for('admin.add_ticket') }}"><span>添加机票</span></a>
-                    <a class="business_menu" href="{{ url_for('admin.company') }}"><span>航空公司管理</span></a>
-                    <a class="business_menu" href="{{ url_for('admin.add_ticket') }}"><span>机票信息管理</span></a>
-                    <a class="business_menu" href="{{ url_for('admin.test') }}"><span>航班信息查询</span></a>
-                    <a class="business_menu" href="{{ url_for('admin.manage_order') }}"><span>订票管理</span></a>
+                    <a class="business_menu_item" href="{{ url_for('admin.add_ticket') }}"><span>添加机票</span></a>
+                    <a class="business_menu_item" href="{{ url_for('admin.company') }}"><span>航空公司管理</span></a>
+{#                    <a class="business_menu_item" href="{{ url_for('admin.test') }}"><span>机票信息管理</span></a>#}
+{#                    <a class="business_menu_item" href="{{ url_for('admin.test') }}"><span>航班信息查询</span></a>#}
+                    <a class="business_menu_item" href="{{ url_for('admin.manage_order') }}"><span>订票管理</span></a>
                 </ul>
             </div>
         </div>
@@ -49,87 +49,87 @@
 </div>
 <div class="right">
     <div class="right_title">
-        <h3>增添/修改机票</h3>
+{#        <h3>增添/修改机票</h3>#}
     </div>
     <div class="changeform">
-        <form action="{{ url_for('admin.add_ticket') }}" method="post">
-            <table>
-                <tr>
+        <form action="{{ url_for('admin.add_ticket') }}" method="post" style="width: 80%">
+            <table style="margin: 10px;width: 70%">
+                <tr style="height: 30px">
                     <td>{{ form.single_double.label }}</td>
-                    <td>{{ form.single_double }}</td>
+                    <td>{{ form.single_double() }}</td>
                 </tr>
-                <tr>
+                <tr style="height: 30px">
                     <td>{{ form.name.label }}</td>
-                    <td>{{ form.name }}</td>
+                    <td>{{ form.name(style="width:196px") }}</td>
                 </tr>
-                <tr>
+                <tr style="height: 30px">
                     <td>{{ form.company_name.label }}</td>
-                    <td>{{ form.company_name }}</td>
+                    <td>{{ form.company_name(style="width:200px") }}</td>
                 </tr>
 
-                <tr>
+                <tr style="height: 30px">
                     <td>{{ form.depart_city.label }}</td>
-                    <td>{{ form.depart_city }}</td>
+                    <td>{{ form.depart_city(style="width:200px") }}</td>
                 </tr>
-                <tr>
+                <tr style="height: 30px">
                     <td>{{ form.arrive_city.label }}</td>
-                    <td>{{ form.arrive_city }}</td>
+                    <td>{{ form.arrive_city(style="width:200px") }}</td>
                 </tr>
-                <tr>
+                <tr style="height: 30px">
                     <td>{{ form.depart_date.label }}</td>
-                    <td>{{ form.depart_date }}</td>
+                    <td>{{ form.depart_date(style="width:196px",id="datepicker",onfocus="this.value = '';",onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}",required="") }}</td>
                 </tr>
-                <tr>
+                <tr style="height: 30px">
                     <td>{{ form.depart_time.label }}</td>
-                    <td>{{ form.depart_time }}</td>
+                    <td>{{ form.depart_time(style="width:200px") }}</td>
                 </tr>
-                <tr>
+                <tr style="height: 30px">
                     <td>{{ form.arrive_date.label }}</td>
-                    <td>{{ form.arrive_date }}</td>
+                    <td>{{ form.arrive_date(style="width:196px",id="datepicker1",onfocus="this.value = '';",onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}",required="") }}</td>
                 </tr>
-                <tr>
+                <tr style="height: 30px">
                     <td>{{ form.arrive_time.label }}</td>
-                    <td>{{ form.arrive_time }}</td>
+                    <td>{{ form.arrive_time(style="width:200px") }}</td>
                 </tr>
-                <tr>
+                <tr style="height: 30px">
                     <td>{{ form.return_date.label }}</td>
-                    <td>{{ form.return_date }}</td>
+                    <td>{{ form.return_date(style="width:196px",id="datepicker2",onfocus="this.value = '';",onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}",required="") }}</td>
                 </tr>
-                <tr>
+                <tr style="height: 30px">
                     <td>{{ form.return_time.label }}</td>
-                    <td>{{ form.return_time }}</td>
+                    <td>{{ form.return_time(style="width:200px") }}</td>
                 </tr>
-                <tr>
+                <tr style="height: 30px">
                     <td>{{ form.first_class_price.label }}</td>
-                    <td>{{ form.first_class_price }}</td>
+                    <td>{{ form.first_class_price(style="width:196px") }}</td>
                 </tr>
-                <tr>
+                <tr style="height: 30px">
                     <td>{{ form.second_class_price.label }}</td>
-                    <td>{{ form.second_class_price }}</td>
+                    <td>{{ form.second_class_price(style="width:196px") }}</td>
                 </tr>
-                <tr>
+                <tr style="height: 30px">
                     <td>{{ form.third_class_price.label }}</td>
-                    <td>{{ form.third_class_price }}</td>
+                    <td>{{ form.third_class_price(style="width:196px") }}</td>
                 </tr>
-                <tr>
+                <tr style="height: 30px">
                     <td>{{ form.first_class_num.label }}</td>
-                    <td>{{ form.first_class_num }}</td>
+                    <td>{{ form.first_class_num(style="width:196px") }}</td>
                 </tr>
-                <tr>
+                <tr style="height: 30px">
                     <td>{{ form.second_class_num.label }}</td>
-                    <td>{{ form.second_class_num }}</td>
+                    <td>{{ form.second_class_num(style="width:196px") }}</td>
                 </tr>
-                <tr>
+                <tr style="height: 30px">
                     <td>{{ form.third_class_num.label }}</td>
-                    <td>{{ form.third_class_num }}</td>
+                    <td>{{ form.third_class_num(style="width:196px") }}</td>
                 </tr>
-                <tr>
+                <tr style="height: 30px">
                     <td>{{ form.depart_airport.label }}</td>
-                    <td>{{ form.depart_airport }}</td>
+                    <td>{{ form.depart_airport(style="width:196px") }}</td>
                 </tr>
                 <tr>
                     <td>{{ form.arrive_airport.label }}</td>
-                    <td>{{ form.arrive_airport }}</td>
+                    <td>{{ form.arrive_airport(style="width:200px; height:20px") }}</td>
                 </tr>
 
 
@@ -138,5 +138,58 @@
         </form>
     </div>
 </div>
+
+  <!--script for portfolio-->
+  <script src="../../static/jquery.min.js"> </script>
+  <script src="../../static/easyResponsiveTabs.js" type="text/javascript"></script>
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $('#horizontalTab').easyResponsiveTabs({
+              type: 'default', //Types: default, vertical, accordion
+              width: 'auto', //auto or any width like 600px
+              fit: true   // 100% fit in a container
+          });
+      });
+  </script>
+
+  <link rel="stylesheet" href="../../static/jquery-ui.css" />
+  <script src="../../static/jquery-ui.js"></script>
+  <
+  <script>
+      $(function() {
+          $( "#datepicker,#datepicker1,#datepicker2,#datepicker3" ).datepicker();
+      });
+  </script>
+
+  <script>
+      $('.value-plus').on('click', function(){
+          var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)+1;
+          divUpd.text(newVal);
+      });
+
+      $('.value-minus').on('click', function(){
+          var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)-1;
+          if(newVal>=1) divUpd.text(newVal);
+      });
+  </script>
+
+  <script>
+	$(document).ready(function () {
+		size_li = $("#myList li").size();
+		x=1;
+		$('#myList li:lt('+x+')').show();
+		$('#loadMore').click(function () {
+			x= (x+1 <= size_li) ? x+1 : size_li;
+			$('#myList li:lt('+x+')').show();
+		});
+		$('#showLess').click(function () {
+			x=(x-1<0) ? 1 : x-1;
+			$('#myList li').not(':lt('+x+')').hide();
+		});
+	});
+</script>
+
+
+
 </body>
 </html>

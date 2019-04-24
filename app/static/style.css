@@ -132,9 +132,14 @@ h3 {
     color:#FFC107;
     margin-bottom: 7px;
 }
+
+.single_double{
+	width:15%;
+	float: left;
+}
 .from,.to,.date,.depart,.return{
 	width:48%;
-	float:left;
+	float:right;
 }
 .from,.to,.date{
 	margin-bottom:40px;

@@ -18,30 +18,30 @@
 <div class="left">
     <div class="left-menu">
         <div class="h5head">
-            <h5>管理菜单</h5>
+            <h2>管理菜单</h2>
         </div>
         <div class="admin_manage">
-            <div class="h6head">
-                <h6>管理员管理</h6>
+            <div class="h3head">
+                <h3>管理员管理</h3>
             </div>
             <div class="admin_manage_content">
                 <ul class="admin_manage_list">
                     <a class="admin_manage_item" href="{{ url_for('admin.add_admin') }}"><span>添加管理员</span></a>
-                    <a class="admin_manege_item" href="{{ url_for('admin.test') }}"><span>管理员管理</span></a>
+                    <a class="admin_manage_item" href="{{ url_for('admin.admin_manage') }}"><span>管理员管理</span></a>
                 </ul>
             </div>
         </div>
         <div class="business_manage">
             <div class="h6head">
-                <h6>机票管理</h6>
+                <h3>机票管理</h3>
             </div>
             <div class="business_menu">
                 <ul class="business_menu_list">
-                    <a class="business_menu" href="{{ url_for('admin.add_ticket') }}"><span>添加机票</span></a>
-                    <a class="business_menu" href="{{ url_for('admin.company') }}"><span>航空公司管理</span></a>
-                    <a class="business_menu" href="{{ url_for('admin.add_ticket') }}"><span>机票信息管理</span></a>
-                    <a class="business_menu" href="{{ url_for('admin.test') }}"><span>航班信息查询</span></a>
-                    <a class="business_menu" href="{{ url_for('admin.manage_order') }}"><span>订票管理</span></a>
+                    <a class="business_menu_item" href="{{ url_for('admin.add_ticket') }}"><span>添加机票</span></a>
+                    <a class="business_menu_item" href="{{ url_for('admin.company') }}"><span>航空公司管理</span></a>
+{#                    <a class="business_menu_item" href="{{ url_for('admin.test') }}"><span>机票信息管理</span></a>#}
+{#                    <a class="business_menu_item" href="{{ url_for('admin.test') }}"><span>航班信息查询</span></a>#}
+                    <a class="business_menu_item" href="{{ url_for('admin.manage_order') }}"><span>订票管理</span></a>
                 </ul>
             </div>
         </div>
@@ -49,19 +49,20 @@
 </div>
 <div class="right">
     <div class="company_manage">
-        <table>
+        <table style="margin: 20px;width: 60%">
             <tr>
                 <td>航空公司英文符号</td>
                 <td>中文名字</td>
                 <td>删除</td>
-                <td>修改</td>
+{#                <td>修改</td>#}
             </tr>
             {% for item in companys %}
                 <tr>
                 <td>{{ item.En_name }}</td>
                 <td>{{ item.company_name }}</td>
-                <td> <a methods="delete" href="{{ url_for('admin.company', company_name=item.En_name) }}"><span>删除</span></a> </td>
-                <td> <a methods="put" href="{{ url_for('admin.company', company_name=item.En_name) }}"><span>修改</span></a> </td>
+                    <td> <form action="{{ url_for('admin.company',company_name=item.En_name) }}"method="post"><input type="submit" value="删除"></form></td>
+{#                    <a methods="delete" href="{{ url_for('admin.company', company_name=item.En_name) }}"><span>删除</span></a> </td>#}
+{#                <td> <a methods="put" href="{{ url_for('admin.company', company_name=item.En_name) }}"><span>修改</span></a> </td>#}
                 </tr>
             {% endfor %}
 
@@ -81,5 +82,59 @@
         </form>
     </div>
 </div>
+
+
+
+  <!--script for portfolio-->
+  <script src="../../static/jquery.min.js"> </script>
+  <script src="../../static/easyResponsiveTabs.js" type="text/javascript"></script>
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $('#horizontalTab').easyResponsiveTabs({
+              type: 'default', //Types: default, vertical, accordion
+              width: 'auto', //auto or any width like 600px
+              fit: true   // 100% fit in a container
+          });
+      });
+  </script>
+
+  <link rel="stylesheet" href="../../static/jquery-ui.css" />
+  <script src="../../static/jquery-ui.js"></script>
+  <
+  <script>
+      $(function() {
+          $( "#datepicker,#datepicker1,#datepicker2,#datepicker3" ).datepicker();
+      });
+  </script>
+
+  <script>
+      $('.value-plus').on('click', function(){
+          var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)+1;
+          divUpd.text(newVal);
+      });
+
+      $('.value-minus').on('click', function(){
+          var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)-1;
+          if(newVal>=1) divUpd.text(newVal);
+      });
+  </script>
+
+  <script>
+	$(document).ready(function () {
+		size_li = $("#myList li").size();
+		x=1;
+		$('#myList li:lt('+x+')').show();
+		$('#loadMore').click(function () {
+			x= (x+1 <= size_li) ? x+1 : size_li;
+			$('#myList li:lt('+x+')').show();
+		});
+		$('#showLess').click(function () {
+			x=(x-1<0) ? 1 : x-1;
+			$('#myList li').not(':lt('+x+')').hide();
+		});
+	});
+</script>
+
+
 </body>
 </html>

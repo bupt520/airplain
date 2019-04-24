@@ -23,6 +23,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
 body {
 	background:url('1.jpg') no-repeat 0px 0px;
+    /*background: #aaaaaa;*/
 	background-size: cover;
 	font-family: 'Open Sans', sans-serif;
 	background-attachment: fixed;
@@ -35,10 +36,12 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .head{
-	margin:0px auto;
+	margin:0px 0px;
 	width:100%;
 	height: auto;
-	background: rgba(10,100,200,.5);
+    /*margin-top: 0px;*/
+	/*background: rgba(10,100,200,.5);*/
+    background: rgba(105,125,140,0.7);
 }
 .url{
     text-align: center;
@@ -50,20 +53,26 @@ h1,h2,h3,h4,h5,h6{
 }
 .left{
 	margin: 0px;
-	width: 10%;
+	width: 13%;
 	height: 800px;
 	float: left;
+    background: rgba(30, 30, 30, 1);
 }
 .right{
-	margin: 0px;
-	width: 90%;
+	margin-right: 0px;
+	width: 87%;
 	height: 1000px;
 	float: right;
-}
+    background: rgba(220, 220, 220, 0.8);
 
-.admin_manage_item, .business_menu{
-    font-size: 1.1em;
-    font-weight: 500;
+}
+.admin_add_update{
+    width: 70%;
+    margin: 10px;
+}
+.admin_manage_item, .business_menu_item{
+    font-size: 0.9em;
+    font-weight: 200;
     cursor: pointer;
     display: inline-block;
     margin: 0;
@@ -77,7 +86,7 @@ h1,h2,h3,h4,h5,h6{
     transition: all 0.3s;
     text-transform: uppercase;
     margin: 0 1.2em 0;
-	color:#b1b1b1;
+	color:#6A67CE;
 	padding:7px 15px;
 }
 
@@ -190,6 +199,11 @@ h3 {
     color:#FFC107;
     margin-bottom: 7px;
 }
+h2{
+    font-size: 25px;
+    color:#cd0a0a;
+    margin-bottom: 7px;
+}
 .from,.to,.date,.depart,.return{
 	width:48%;
 	float:left;
@@ -215,7 +229,7 @@ h3 {
 
 input[type="submit"] {
     font-size: 14px;
-    color: #fff;
+    color: #000000;
     background:#ffc107;
     border: none;
     outline: none;
