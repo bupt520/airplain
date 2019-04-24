@@ -37,7 +37,7 @@ def login():
             next = request.args.get('next')
             print(next)
             if not next:  # or not next.startwith('/'):
-                next = url_for('web.index')
+                next = url_for('web.personal_info')
             return redirect(next)
         else:
             flash('账号不存在或密码错误')
