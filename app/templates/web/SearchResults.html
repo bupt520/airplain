@@ -83,7 +83,7 @@
 {#                    </div>#}
 {#                </form>#}
 {#            </div>#}
-            <div class="SearchResultResults" style="text-align: center">
+            <div class="SearchResultResults" style="text-align: center;background: rgba(3, 3, 3, 0.57);">
                 {% if tickets %}
                 <table class="resulttables" style="margin: 0px auto">
                     <tr class="airinfo">
@@ -108,6 +108,8 @@
                     {% endfor %}
 
                 </table>
+                    {% else %}
+                    <h1>无相关机票</h1>
                 {% endif %}
 
             </div>
