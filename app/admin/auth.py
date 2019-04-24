@@ -41,6 +41,7 @@ def add_admin():
         with db.auto_commit():
             ad = Admin()
             ad.set_attrs(form.data)
+            ad.role="super"
             # user=user.create_user(form)
             db.session.add(ad)
             return redirect(url_for('admin.admin_manage'))
