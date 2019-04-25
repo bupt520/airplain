@@ -24,8 +24,9 @@ class Admin(Base):
 
 
 
+
     def check_passward(self, raw):
-        return check_password_hash(self._password, raw)
+        return check_password_hash(self.password, raw)
 
     def change_info(self, form):
         with db.auto_commit():
