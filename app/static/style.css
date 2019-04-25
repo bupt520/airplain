@@ -112,8 +112,40 @@ h1{
 }
 
 .SearchResultSearch{
-	margin: auto;
-	text-align: center;
+	height: auto;
+	margin: 0px;
+	width: 100%;
+	/*background: rgba(227, 246, 255, 0.7);*/
+	padding: 0px;
+}
+.Single_Double{
+	float: left;
+	margin: 0px;
+	width: 16%;
+	height: auto;
+}
+.From{
+	margin: 0px;
+	width: 42%;
+	float: left;
+	height: auto;
+}
+.To{
+	margin:0px;
+	width: 42%;
+	float: right;
+	height: auto;
+}
+.Date{
+	width: 65%;
+	float: left;
+	height: auto;
+	margin-left: 16%;
+}
+.SearchResultResults{
+	margin: 0px;
+	padding: 0px;
+	/*background: rgba(25, 25, 25, 0.7);*/
 }
 h2.resp-accordion {
 	cursor: pointer;
@@ -134,7 +166,11 @@ h3 {
     color:#FFC107;
     margin-bottom: 7px;
 }
-
+h4{
+	font-size: 16px;
+    color:#FFC107;
+    margin-bottom: 2px;
+}
 .single_double{
 	width:100%;
 	float: left;
@@ -155,19 +191,22 @@ h3 {
 	padding: 0px;
 	text-align: center;
 }
-.adminsign{
 
-}
 
-input[type="text"]{
-	padding:10px;
-	width:93%;
-	float:left;
-}
-input#datepicker,input#datepicker1,input#datepicker2,input#datepicker3 {
-    width: 85%;
-	margin-bottom:10px;
-}
+/*input[type="text"]{*/
+	/*padding:10px;*/
+	/*width:93%;*/
+	/*float:left;*/
+/*}*/
+/*input#datepicker,input#datepicker1,input#datepicker2 {*/
+    /*!*width: 85%;*!*/
+	/*width: 30px;*/
+	/*margin-bottom:10px;*/
+/*}*/
+/*input#datepicker3{*/
+	/*width: 30px;*/
+	/*margin-bottom:10px;*/
+/*}*/
 select#w3_country1 {
     padding: 10px;
 	float:left;
@@ -179,7 +218,7 @@ label.checkbox {
     position: relative;
     font-size: 0.95em;
     font-weight: normal;
-    color:#dedede;
+    color: #de2b40;
     padding: 0em 0.5em 0em 2em;
 }
 .checkbox i {
@@ -318,7 +357,7 @@ input[type="submit"] {
     border: none;
     outline: none;
     padding: 10px 20px;
-    margin-top: 50px;
+    margin-top: 20px;
 	cursor:pointer;
 	 transition: 0.5s all ease;
     -webkit-transition: 0.5s all ease;

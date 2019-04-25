@@ -40,12 +40,10 @@ h1{
 }
 .VIPhead{
     width: 100%;
-    margin-top: 0px;
-    margin-bottom: 10px;
+    margin-top: 100px;
+    margin-bottom: 50px;
 }
-.VIPheadtitle{
 
-}
 .menulist{
     list-style: none;
     padding: 15px 0px;
@@ -73,9 +71,12 @@ h1{
 	padding:7px 15px;
 
 }
-
+.main_content{
+	width: 70%;
+	margin:50px auto;
+}
 .content{
-
+	background: rgba(3,3,3,0.6);
 }
 .left{
 	margin: 0px auto;
@@ -122,3 +123,4 @@ h3 {
     color:#FFC107;
     margin-bottom: 7px;
 }
+.c

@@ -6,28 +6,19 @@
     <!--<link rel="stylesheet" href="../../static/style.css">-->
     <link rel="stylesheet" href="../../static/admin_style.css">
 </head>
-<body>
+<body >
 
-  <div class="admin">
-    <div class="sap_table">
-        <div class="admin-table">
-            <div class="admin-table-list">
-                <!--<a class="admin-table-item" onclick="AdminSignIn()"><span>管理员登录</span></a>-->
-            </div>
-        </div>
-    </div>
- </div>
 
   <h1>管理员登录</h1>
 	<div class="main-agileinfo">
 		<div class="sap_tabs">
 			<div id="horizontalTab">
 				<ul class="resp-tabs-list">
-                    <a class="resp-tab-item" onclick="window.location.replace('../web/index.html')"><span>网站首页</span></a>
-                    <a class="resp-tab-item" onclick="window.location.replace('../web/TicketSearch.html')"><span>机票查询</span></a>
-                    <a class="resp-tab-item" onclick="window.location.replace('../web/SignUp.html')"><span>会员注册</span></a>
-                    <a class="resp-tab-item" onclick="window.location.replace('../web/VIPSignIn.html')"><span>会员登陆</span></a>
-                    <a class="resp-tab-item" onclick="window.location.replace('../web/VIPInfo.html')"><span>会员中心</span></a>
+                    <a class="resp-tab-item" onclick="window.location.replace('{{ url_for('web.index') }}')"><span>网站首页</span></a>
+                    <a class="resp-tab-item" onclick="window.location.replace('{{ url_for('web.search') }}')"><span>机票查询</span></a>
+                    <a class="resp-tab-item" onclick="window.location.replace('{{ url_for('web.register') }}')"><span>会员注册</span></a>
+                    <a class="resp-tab-item" onclick="window.location.replace('{{ url_for('web.login') }}')"><span>会员登陆</span></a>
+                    <a class="resp-tab-item" onclick="window.location.replace('{{ url_for('web.personal_info') }}')"><span>会员中心</span></a>
 				</ul>
 				<div class="clearfix"> </div>
                 <div class="signinform">
