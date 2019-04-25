@@ -4,12 +4,22 @@
     <meta charset="UTF-8">
     <title>VIPSignUp</title>
     <link rel="stylesheet" href="../../static/VIPstyle.css">
+    <link rel="stylesheet" href="../../static/admin_style.css">
 </head>
 <body>
-<div class="VIPhead">
+
+  <div class="admin">
+    <div class="sap_table">
+        <div class="admin-table">
+            <div class="admin-table-list">
+                <a class="admin-table-item" onclick="AdminSignIn()"><span>管理员登录</span></a>
+            </div>
+        </div>
+    </div>
+ </div>
     <h1>VIP用户注册</h1>
-</div>
-<div class="VIPheadtitle">
+  <div class="main_content">
+    <div class="VIPheadtitle">
     <div class="menutap">
         <ul class="menulist">
             <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.index') }}')"><span>网站首页</span></a>
@@ -20,33 +30,33 @@
         </ul>
     </div>
 </div>
-<div class="content">
+    <div class="content">
     <div class="signupform">
         <form action="{{ url_for('web.register') }}" method="post" style="text-align: center">
             <table style="margin: auto;width: 60%">
                 <tr style="height: 30px">
-                    <td>{{ form.nickname.label(style="width:100px") }}</td>
+                    <td style="color: #E5E5E5">{{ form.nickname.label(style="width:100px") }}</td>
                     <td>{{ form.nickname(style="width:300px;height:20px") }}</td>
                 </tr>
                 <tr style="height: 30px">
-                    <td>{{ form.password.label }}</td>
-                    <td>{{ form.password(style="width:300px;height:20px") }}</td>
+                    <td style="color: #E5E5E5">{{ form.password.label }}</td>
+                    <td>{{ form.password(style="width:300px;height:20px",id="pwd") }}</td>
                 </tr>
                 <tr style="height: 30px">
-                    <td>{{ form.repeat_password.label }}</td>
-                    <td> {{ form.repeat_password(style="width:300px;height:20px") }}</td>
+                    <td style="color: #E5E5E5">{{ form.repeat_password.label }}</td>
+                    <td> {{ form.repeat_password(style="width:300px;height:20px", id = "npwd") }}</td>
                 </tr>
                 <tr style="height: 30px">
-                    <td>{{ form.name.label }}</td>
+                    <td style="color: #E5E5E5">{{ form.name.label }}</td>
                     <td>{{ form.name(style="width:300px;height:20px") }}</td>
                 </tr>
                 <tr style="height: 30px">
-                    <td>{{ form.id_card.label }}</td>
-                    <td>{{ form.id_card(style="width:300px;height:20px") }}</td>
+                    <td style="color: #E5E5E5">{{ form.id_card.label }}</td>
+                    <td>{{ form.id_card(style="width:300px;height:20px",id="signup_id") }}</td>
                 </tr>
                 <tr style="height: 30px">
-                    <td>{{ form.phone_number.label }}</td>
-                    <td>{{ form.phone_number(style="width:300px;height:20px") }}</td>
+                    <td style="color: #E5E5E5">{{ form.phone_number.label }}</td>
+                    <td>{{ form.phone_number(style="width:300px;height:20px",id="phone_num") }}</td>
                 </tr>
             </table>
 {#            <div class="signupname">{{ form.nickname.label }}   {{ form.nickname }}</div>#}
@@ -55,14 +65,68 @@
 {#            <div class="signupname">{{ form.name.label }}   {{ form.name }}</div>#}
 {#            <div class="signupid">{{ form.id_card.label }}    {{ form.id_card }}</div>#}
 {#            <div class="signupphone">{{ form.phone_number.label }}   {{ form.phone_number }}</div>#}
-            <input type="submit" value="注册">
+            <input type="submit" value="注册" onclick="return check()">
         </form>
     </div>
 </div>
+  </div>
 <script>
+    var aCity={11:"北京",12:"天津",13:"河北",14:"山西",15:"内蒙古",
+            21:"辽宁",22:"吉林",23:"黑龙江",31:"上海",32:"江苏",33:"浙江",
+            34:"安徽",35:"福建",36:"江西",37:"山东",41:"河南",42:"湖北",
+            43:"湖南",44:"广东",45:"广西",46:"海南",50:"重庆",51:"四川"
+            ,52:"贵州",53:"云南",54:"西藏",61:"陕西",62:"甘肃",63:"青海",
+            64:"宁夏",65:"新疆",71:"台湾",81:"香港",82:"澳门",91:"国外"}
     function AdminSignIn() {
 	    window.location.replace('{{ url_for('admin.login') }}');
 
+    }
+    function check_phone() {
+        var phone = document.getElementById('phone_num').value;
+        var re;
+        re = /^(1[358][0-9]{9})$/;
+        if(re.test(phone)==false){
+            alert('请输入正确的电话号码')
+            return false;
+        }
+        return true;
+    }
+    function check() {
+        var sId=document.getElementById('signup_id').value;
+        var iSum=0 ;
+        var pwd=document.getElementById('pwd').value;
+        var npwd = document.getElementById('npwd').value;
+
+        if(pwd!=npwd){
+            alert('请输入一致的密码')
+            return false;
+        }
+        if(!check_phone()){
+            return false;
+        }
+        if(!/^\d{17}(\d|x)$/i.test(sId)){
+            alert('你输入的身份证长度或格式错误1');
+            return false;
+        }
+        sId=sId.replace(/x$/i,"a");
+        if(aCity[parseInt(sId.substr(0,2))]==null){
+            alert('你输入的身份证长度或格式错误2');
+            return false;
+        }
+        sBirthday=sId.substr(6,4)+"-"+Number(sId.substr(10,2))+"-"+Number(sId.substr(12,2));
+        var d=new Date(sBirthday.replace(/-/g,"/")) ;
+        if(sBirthday!=(d.getFullYear()+"-"+ (d.getMonth()+1) + "-" + d.getDate())){
+            alert('你输入的身份证长度或格式错误3');
+            return false;
+        }
+        for(var i = 17;i>=0;i --) iSum += (Math.pow(2,i) % 11) * parseInt(sId.charAt(17 - i),11) ;
+        if(iSum%11!=1){
+            alert('你输入的身份证长度或格式错误4');
+            return false;
+        }
+        //aCity[parseInt(sId.substr(0,2))]+","+sBirthday+","+(sId.substr(16,1)%2?"男":"女");//此次还可以判断出输入的身份证号的人性别
+        return true;
+        
     }
 </script>
 </body>

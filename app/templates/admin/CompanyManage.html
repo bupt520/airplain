@@ -60,7 +60,7 @@
                 <tr>
                 <td>{{ item.En_name }}</td>
                 <td>{{ item.company_name }}</td>
-                    <td> <form action="{{ url_for('admin.company',company_name=item.En_name) }}"method="post"><input type="submit" value="删除"></form></td>
+                    <td> <form action="{{ url_for('admin.company',company_name=item.En_name) }}" method="get"><input type="submit" value="删除"></form></td>
 {#                    <a methods="delete" href="{{ url_for('admin.company', company_name=item.En_name) }}"><span>删除</span></a> </td>#}
 {#                <td> <a methods="put" href="{{ url_for('admin.company', company_name=item.En_name) }}"><span>修改</span></a> </td>#}
                 </tr>

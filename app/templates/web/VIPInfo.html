@@ -22,14 +22,14 @@
 </div>
 <div class="left">
         <table>
-            <tr>
-                <td><a href="{{ url_for('web.personal_info') }}"><span>我的信息</span></a></td>
+            <tr style="height: 30px">
+                <td ><a href="{{ url_for('web.personal_info') }}" style="color: #00bcd4"><span>我的信息</span></a></td>
             </tr>
-            <tr>
-                <td><a href="{{ url_for('web.my_order') }}"><span>我的订单</span></a></td>
+            <tr style="height: 30px">
+                <td><a href="{{ url_for('web.my_order') }}" style="color: #00bcd4"><span>我的订单</span></a></td>
             </tr>
-            <tr>
-                <td><a href="{{ url_for('web.logout') }}"><span>退出登录</span></a></td>
+            <tr style="height: 30px">
+                <td><a href="{{ url_for('web.logout') }}" style="color: #00bcd4"><span>退出登录</span></a></td>
             </tr>
         </table>
     </div>
@@ -39,40 +39,88 @@
         <form action="{{ url_for('web.personal_info') }}" method="post" style="margin: 10px">
             <table style="margin: 10px;width: 40%">
                 <tr style="height: 30px">
-                    <td>{{ form.nickname.label }}</td>
-                    <td>{{ form.nickname }}</td>
+                    <td style="color: #E5E5E5">{{ form.nickname.label }}</td>
+                    <td>{{ form.nickname() }}</td>
                 </tr>
                 <tr style="height: 30px">
-                    <td>{{ form.password.label }}</td>
-                    <td>{{ form.password }}</td>
+                    <td style="color: #E5E5E5">{{ form.password.label }}</td>
+                    <td>{{ form.password() }}</td>
                 </tr>
                 <tr style="height: 30px">
-                    <td>{{ form.name.label }}</td>
+                    <td style="color: #E5E5E5">{{ form.name.label }}</td>
                     <td>{{ form.name }}</td>
                 </tr>
                 <tr style="height: 30px">
-                    <td>{{ form.id_card.label }} </td>
-                    <td>{{ form.id_card }}</td>
+                    <td style="color: #E5E5E5">{{ form.id_card.label }} </td>
+                    <td>{{ form.id_card(id="signup_id") }}</td>
                 </tr>
                 <tr style="height: 30px">
-                    <td>{{ form.phone_number.label }}</td>
-                    <td> {{ form.phone_number }}</td>
+                    <td style="color: #E5E5E5">{{ form.phone_number.label }}</td>
+                    <td> {{ form.phone_number(id="phone_num") }}</td>
                 </tr>
             </table>
-{#            <div class="signupname">{{ form.nickname.label }}   {{ form.nickname }}</div>#}
-{#            <div class="signuppwd">{{ form.password.label }}   {{ form.password }}</div>#}
-{#            <div class="signupname">{{ form.name.label }}   {{ form.name }}</div>#}
-{#            <div class="signupid">{{ form.id_card.label }}    {{ form.id_card }}</div>#}
-{#            <div class="signupphone">{{ form.phone_number.label }}   {{ form.phone_number }}</div>#}
-            <input type="submit" value="修改">
+            <input type="submit" value="修改" style="margin-left: 100px " onclick="return check()">
         </form>
     </div>
 </div>
 
 
 <script>
+    var aCity={11:"北京",12:"天津",13:"河北",14:"山西",15:"内蒙古",
+            21:"辽宁",22:"吉林",23:"黑龙江",31:"上海",32:"江苏",33:"浙江",
+            34:"安徽",35:"福建",36:"江西",37:"山东",41:"河南",42:"湖北",
+            43:"湖南",44:"广东",45:"广西",46:"海南",50:"重庆",51:"四川"
+            ,52:"贵州",53:"云南",54:"西藏",61:"陕西",62:"甘肃",63:"青海",
+            64:"宁夏",65:"新疆",71:"台湾",81:"香港",82:"澳门",91:"国外"}
     function AdminSignIn() {
 	    window.location.replace('{{ url_for('admin.login') }}');
+
+    }
+    function check_phone() {
+        var phone = document.getElementById('phone_num').value;
+        var re;
+        re = /^(1[358][0-9]{9})$/;
+        if(re.test(phone)==false){
+            alert('请输入正确的电话号码')
+            return false;
+        }
+        return true;
+    }
+    function check() {
+        var sId=document.getElementById('signup_id').value;
+        var iSum=0 ;
+{#        var pwd=document.getElementById('pwd').value;#}
+{#        var npwd = document.getElementById('npwd').value;#}
+{##}
+{#        if(pwd!=npwd){#}
+{#            alert('请输入一致的密码')#}
+{#            return false;#}
+{#        }#}
+        if(!check_phone()){
+            return false;
+        }
+        if(!/^\d{17}(\d|x)$/i.test(sId)){
+            alert('你输入的身份证长度或格式错误1');
+            return false;
+        }
+        sId=sId.replace(/x$/i,"a");
+        if(aCity[parseInt(sId.substr(0,2))]==null){
+            alert('你输入的身份证长度或格式错误2');
+            return false;
+        }
+        sBirthday=sId.substr(6,4)+"-"+Number(sId.substr(10,2))+"-"+Number(sId.substr(12,2));
+        var d=new Date(sBirthday.replace(/-/g,"/")) ;
+        if(sBirthday!=(d.getFullYear()+"-"+ (d.getMonth()+1) + "-" + d.getDate())){
+            alert('你输入的身份证长度或格式错误3');
+            return false;
+        }
+        for(var i = 17;i>=0;i --) iSum += (Math.pow(2,i) % 11) * parseInt(sId.charAt(17 - i),11) ;
+        if(iSum%11!=1){
+            alert('你输入的身份证长度或格式错误4');
+            return false;
+        }
+        //aCity[parseInt(sId.substr(0,2))]+","+sBirthday+","+(sId.substr(16,1)%2?"男":"女");//此次还可以判断出输入的身份证号的人性别
+        return true;
 
     }
 </script>
