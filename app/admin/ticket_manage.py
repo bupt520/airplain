@@ -37,14 +37,11 @@ def company():
 @admin.route('/admin/company/<company_name>', methods=['GET', 'POST'])
 def change_company(company_name):
     form = AddCompanyForm(request.form)
-    Company.query().all()
-    if request.method == 'POST':  # and form.validate():
-        with db.auto_commit():
-            company = Company()
-            company.set_attrs(form.data)
-            db.session.add(company)
-            return '添加公司成功'
-            # return redirect(url_for('web.login'))
+    com=Company.query.filter_by(company_name=company_name).first()
+    # if request.method == 'POST':  # and form.validate():
+    with db.auto_commit():
+        db.session.delete(com)
+    return redirect(url_for('admin.company'))
 
 
 # 添加机票
