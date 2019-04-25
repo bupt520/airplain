@@ -4,6 +4,11 @@
 # Date:         2019/4/9
 #-------------------------------------------------------------------------------
 from flask import Blueprint, render_template
+from werkzeug.security import generate_password_hash
+
+
+from app.models.admin import Admin
+from app.models.base import db
 
 admin = Blueprint('admin', __name__)
 # 下面不加也行
@@ -12,6 +17,7 @@ from app.admin import ticket_manage
 from app.admin import auth
 
 from app.admin import main
+
 
 
 @admin.app_errorhandler(404)

@@ -19,7 +19,7 @@ def login():
     form = LoginForm(request.form)
     if request.method == 'POST':  # and form.validate():
         ad = Admin.query.filter_by(nickname=form.nickname.data).first()
-        if ad:
+        if ad and ad.check_passward(form.password.data):
             return redirect(url_for('admin.admin_manage'))
     return render_template('admin/AdminSignIn.html', form=form)
 
