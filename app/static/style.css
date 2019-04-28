@@ -30,12 +30,13 @@ body {
 }
 h1,h2,h3,h4,h5,h6{
 	font-family: 'Montserrat', sans-serif;
-	
 }
 
 .admin{
 	margin: 30px auto;
 	margin-top:10px;
+	float: right;
+	width: 30%;
 }
 .admin-table-list{
 	list-style: none;
@@ -61,7 +62,6 @@ h1,h2,h3,h4,h5,h6{
     margin: 0 1.2em 0;
 	color:#b1b1b1;
 	padding:7px 15px;
-
 }
 h1{
 	color:#fff;
@@ -74,6 +74,15 @@ h1{
 	width:70%;
 }
 
+.head{
+	margin: 20px auto;
+	width: 100%;
+	/*height: auto;*/
+}
+.head_title{
+	float: left;
+	width: 70%;
+}
 .resp-tabs-list {
     list-style: none;
     padding: 15px 0px;
@@ -100,7 +109,25 @@ h1{
 	color:#b1b1b1;
 	padding:7px 15px;
 }
-
+.menu-tab-item{
+	font-size: 1.1em;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0;
+    text-align: center;
+    list-style: none;
+    outline: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    margin: 0 1.2em 0;
+	color:#b1b1b1;
+	padding:7px 15px;
+}
 .resp-tab-active {
 	color:#fff;	
 }

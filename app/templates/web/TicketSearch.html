@@ -7,17 +7,41 @@
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 </head>
-<body>
-  <div class="admin">
-    <div class="sap_table">
-        <div class="admin-table">
-            <div class="admin-table-list">
-                <a class="admin-table-item" onclick=AdminSignIn()><span>管理员登录</span></a>
+<body style="-webkit-filter: brightness(0.7)">
+<div id="head">
+    <div class="head_title">
+        <h1>FLAY</h1>
+    </div>
+    <div class="navigation">
+        <div id="horizontalTab">
+            <ul id="navigation_list">
+                <a class="navigation-item" onclick="window.location.replace('{{ url_for('web.index') }}')"><span>网站首页</span></a>
+                <a class="navigation-item" onclick="window.location.replace('{{ url_for('web.search') }}')"><span>机票查询</span></a>
+                <a class="navigation-item" onclick="window.location.replace('{{ url_for('web.register') }}')"><span>会员注册</span></a>
+                <a class="navigation-item" onclick="window.location.replace('{{ url_for('web.login') }}')"><span>会员登陆</span></a>
+                <a class="navigation-item" onclick="window.location.replace('{{ url_for('web.personal_info') }}')"><span>会员中心</span></a>
+            </ul>
+        </div>
+    </div>
+    <div class="admin">
+        <div class="sap_table">
+            <div class="admin-table">
+                <div class="admin-table-list">
+                    <a class="admin-table-item" onclick=AdminSignIn()><span>管理员登录</span></a>
+                </div>
             </div>
         </div>
     </div>
- </div>
+    <div class="clear"></div>
+</div>
+<div class="body_content">
+    <div class="content_top"></div>
+    <div class="content_left">
+        <div class="search_form">
 
+        </div>
+    </div>
+</div>
   <h1>机票查询</h1>
 	<div class="main-agileinfo">
         <ul class="resp-tabs-list">
@@ -65,7 +89,10 @@
     </div>
 
 
-
+<div class="bottom">
+    <p>xxx公司机票预订系统</p>
+    <p>版权所有@2019</p>
+</div>
 <script>
     function AdminSignIn() {
 	    window.location.replace('AdminSignIn.html');

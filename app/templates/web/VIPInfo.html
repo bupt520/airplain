@@ -3,68 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <title>用户中心</title>
-    <link rel="stylesheet" href="../../static/VIPstyle.css">
+{#    <link rel="stylesheet" href="../../static/VIPstyle.css">#}
+    <link rel="stylesheet" href="../../static/web_style.css">
 </head>
 <body>
-<div class="VIPhead">
-    <h1>用户中心</h1>
-</div>
-<div class="VIPheadtitle">
-    <div class="menutap">
-        <ul class="menulist">
-            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.index') }}')"><span>网站首页</span></a>
-            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.search') }}')"><span>机票查询</span></a>
-            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.register') }}')"><span>会员注册</span></a>
-            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.login') }}')"><span>会员登陆</span></a>
-            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.personal_info') }}')"><span>会员中心</span></a>
-        </ul>
+
+<div class="bcg" style="background: rgba(255,255,255,0.8);height: 800px">
+
+
+
+<div id="head" style="color: black">
+    <div class="head_title">
+        <h1 style="color: #212121">用户中心</h1>
     </div>
-</div>
-<div class="left">
-        <table>
-            <tr style="height: 30px">
-                <td ><a href="{{ url_for('web.personal_info') }}" style="color: #00bcd4"><span>我的信息</span></a></td>
-            </tr>
-            <tr style="height: 30px">
-                <td><a href="{{ url_for('web.my_order') }}" style="color: #00bcd4"><span>我的订单</span></a></td>
-            </tr>
-            <tr style="height: 30px">
-                <td><a href="{{ url_for('web.logout') }}" style="color: #00bcd4"><span>退出登录</span></a></td>
-            </tr>
-        </table>
+    <div class="navigation">
+        <div id="horizontalTab">
+            <ul id="navigation_list">
+                <a class="navigation-item" onclick="window.location.replace('{{ url_for('web.index') }}')"><span>网站首页</span></a>
+                <a class="navigation-item" onclick="window.location.replace('{{ url_for('web.search') }}')"><span>机票查询</span></a>
+                <a class="navigation-item" onclick="window.location.replace('{{ url_for('web.register') }}')"><span>会员注册</span></a>
+                <a class="navigation-item" onclick="window.location.replace('{{ url_for('web.login') }}')"><span>会员登陆</span></a>
+                <a class="navigation-item" onclick="window.location.replace('{{ url_for('web.personal_info') }}')"><span>会员中心</span></a>
+            </ul>
+        </div>
     </div>
-<div class="right">
-    <h3>我的信息</h3>
-    <div class="signupform">
-        <form action="{{ url_for('web.personal_info') }}" method="post" style="margin: 10px">
-            <table style="margin: 10px;width: 40%">
+    <div class="admin">
+        <div class="sap_table">
+            <div class="admin-table">
+                <div class="admin-table-list">
+                    <a class="admin-table-item" onclick=AdminSignIn()><span>管理员登录</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<hr />
+
+<div class="body_content">
+    <div class="left" >
+        <div class="left_table" style="border: 1px solid #000000">
+            <div class="user_img">
+                <img src="../../static/person_1.jpg">
+            </div>
+            <table style="margin: auto">
                 <tr style="height: 30px">
-                    <td style="color: #E5E5E5">{{ form.nickname.label }}</td>
-                    <td>{{ form.nickname() }}</td>
+                    <td style="color: #00bcd4"><a href="{{ url_for('web.personal_info') }}" style="color: #00bcd4"><span>我的信息</span></a></td>
                 </tr>
                 <tr style="height: 30px">
-                    <td style="color: #E5E5E5">{{ form.password.label }}</td>
-                    <td>{{ form.password() }}</td>
+                    <td><a href="{{ url_for('web.my_order') }}" style="color: #00bcd4"><span>我的订单</span></a></td>
                 </tr>
                 <tr style="height: 30px">
-                    <td style="color: #E5E5E5">{{ form.name.label }}</td>
-                    <td>{{ form.name }}</td>
-                </tr>
-                <tr style="height: 30px">
-                    <td style="color: #E5E5E5">{{ form.id_card.label }} </td>
-                    <td>{{ form.id_card(id="signup_id") }}</td>
-                </tr>
-                <tr style="height: 30px">
-                    <td style="color: #E5E5E5">{{ form.phone_number.label }}</td>
-                    <td> {{ form.phone_number(id="phone_num") }}</td>
+                    <td><a href="{{ url_for('web.logout') }}" style="color: #00bcd4"><span>退出登录</span></a></td>
                 </tr>
             </table>
-            <input type="submit" value="修改" style="margin-left: 100px " onclick="return check()">
-        </form>
+        </div>
     </div>
+    <div class="right" style="border: 1px solid #000000;height: 600px">
+        <h3 style="font-size: 1em;margin-left: 20px;color:yellowgreen">我的信息</h3>
+        <div class="signupform">
+            <form action="{{ url_for('web.personal_info') }}" method="post" style="margin: 10px">
+                <table style="margin: 10px">
+                    <tr style="height: 30px;text-align: center">
+                        <td style="color: #212121">{{ form.nickname.label }}</td>
+                        <td>{{ form.nickname() }}</td>
+                    </tr>
+                    <tr style="height: 30px;text-align: center">
+                        <td style="color: #212121">{{ form.password.label }}</td>
+                        <td>{{ form.password() }}</td>
+                    </tr>
+                    <tr style="height: 30px;text-align: center">
+                        <td style="color: #212121">{{ form.name.label }}</td>
+                        <td>{{ form.name }}</td>
+                    </tr>
+                    <tr style="height: 30px;text-align: center">
+                        <td style="color: #212121">{{ form.id_card.label }} </td>
+                        <td>{{ form.id_card(id="signup_id") }}</td>
+                    </tr>
+                    <tr style="height: 30px;text-align: center">
+                        <td style="color: #212121">{{ form.phone_number.label }}</td>
+                        <td> {{ form.phone_number(id="phone_num") }}</td>
+                    </tr>
+                </table>
+                <input type="submit" value="修改" style="margin-left: 100px " onclick="return check()">
+            </form>
+        </div>
+        <div class="img">
+            <img src="../../static/2.jpg">
+        </div>
+    </div>
+    <div class="clear"></div>
 </div>
+    <div class="clear"></div>
 
-
+</div>
 <script>
     var aCity={11:"北京",12:"天津",13:"河北",14:"山西",15:"内蒙古",
             21:"辽宁",22:"吉林",23:"黑龙江",31:"上海",32:"江苏",33:"浙江",

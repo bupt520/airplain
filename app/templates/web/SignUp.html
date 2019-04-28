@@ -3,73 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <title>VIPSignUp</title>
-    <link rel="stylesheet" href="../../static/VIPstyle.css">
-    <link rel="stylesheet" href="../../static/admin_style.css">
+{#    <link rel="stylesheet" href="../../static/VIPstyle.css">#}
+{#    <link rel="stylesheet" href="../../static/admin_style.css">#}
+    <link rel="stylesheet" href="../../static/web_style.css">
 </head>
-<body>
+<body style="">
 
-  <div class="admin">
-    <div class="sap_table">
-        <div class="admin-table">
-            <div class="admin-table-list">
-                <a class="admin-table-item" onclick="AdminSignIn()"><span>管理员登录</span></a>
+<div style="background: rgba(255,255,255,0.8);width: 100%;height: 800px;margin: 0">
+
+
+<div id="head" style="color: black">
+    <div class="head_title">
+        <h1 style="color: #212121">FLAY</h1>
+    </div>
+    <div class="navigation">
+        <div id="horizontalTab">
+            <ul id="navigation_list">
+                <a class="navigation-item" onclick="window.location.replace('{{ url_for('web.index') }}')"><span>网站首页</span></a>
+                <a class="navigation-item" onclick="window.location.replace('{{ url_for('web.search') }}')"><span>机票查询</span></a>
+                <a class="navigation-item" onclick="window.location.replace('{{ url_for('web.register') }}')"><span>会员注册</span></a>
+                <a class="navigation-item" onclick="window.location.replace('{{ url_for('web.login') }}')"><span>会员登陆</span></a>
+                <a class="navigation-item" onclick="window.location.replace('{{ url_for('web.personal_info') }}')"><span>会员中心</span></a>
+            </ul>
+        </div>
+    </div>
+    <div class="admin">
+        <div class="sap_table">
+            <div class="admin-table">
+                <div class="admin-table-list">
+                    <a class="admin-table-item" onclick=AdminSignIn()><span>管理员登录</span></a>
+                </div>
             </div>
         </div>
     </div>
- </div>
-    <h1>VIP用户注册</h1>
-  <div class="main_content">
-    <div class="VIPheadtitle">
-    <div class="menutap">
-        <ul class="menulist">
-            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.index') }}')"><span>网站首页</span></a>
-            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.search') }}')"><span>机票查询</span></a>
-            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.register') }}')"><span>会员注册</span></a>
-            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.login') }}')"><span>会员登陆</span></a>
-            <a class="menu-tab-item" onclick="window.location.replace('{{ url_for('web.personal_info') }}')"><span>会员中心</span></a>
-        </ul>
-    </div>
+    <div class="clear"></div>
 </div>
-    <div class="content">
-    <div class="signupform">
+<hr />
+
+<div class="body_content">
+    <div class="title">
+        <h1 style="color:#363636;font-size: 2.1em">VIP用户注册</h1>
+    </div>
+    <div class="signup_form">
         <form action="{{ url_for('web.register') }}" method="post" style="text-align: center">
-            <table style="margin: auto;width: 60%">
+            <table style="margin: auto;width: 30%">
                 <tr style="height: 30px">
-                    <td style="color: #E5E5E5">{{ form.nickname.label(style="width:100px") }}</td>
-                    <td>{{ form.nickname(style="width:300px;height:20px") }}</td>
+                    <td style="color:#363636;text-align: center">{{ form.nickname.label(style="width:10px") }}</td>
+                    <td style="">{{ form.nickname(style="width:300px;height:20px") }}</td>
                 </tr>
                 <tr style="height: 30px">
-                    <td style="color: #E5E5E5">{{ form.password.label }}</td>
+                    <td style="color:#363636;text-align: center">{{ form.password.label }}</td>
                     <td>{{ form.password(style="width:300px;height:20px",id="pwd") }}</td>
                 </tr>
                 <tr style="height: 30px">
-                    <td style="color: #E5E5E5">{{ form.repeat_password.label }}</td>
+                    <td style="color:#363636;text-align: center">{{ form.repeat_password.label }}</td>
                     <td> {{ form.repeat_password(style="width:300px;height:20px", id = "npwd") }}</td>
                 </tr>
                 <tr style="height: 30px">
-                    <td style="color: #E5E5E5">{{ form.name.label }}</td>
+                    <td style="color:#363636;text-align: center">{{ form.name.label }}</td>
                     <td>{{ form.name(style="width:300px;height:20px") }}</td>
                 </tr>
                 <tr style="height: 30px">
-                    <td style="color: #E5E5E5">{{ form.id_card.label }}</td>
+                    <td style="color:#363636;text-align: center">{{ form.id_card.label }}</td>
                     <td>{{ form.id_card(style="width:300px;height:20px",id="signup_id") }}</td>
                 </tr>
                 <tr style="height: 30px">
-                    <td style="color: #E5E5E5">{{ form.phone_number.label }}</td>
+                    <td style="color:#363636;text-align: center">{{ form.phone_number.label }}</td>
                     <td>{{ form.phone_number(style="width:300px;height:20px",id="phone_num") }}</td>
                 </tr>
             </table>
-{#            <div class="signupname">{{ form.nickname.label }}   {{ form.nickname }}</div>#}
-{#            <div class="signuppwd">{{ form.password.label }}   {{ form.password }}</div>#}
-{#            <div class="signuppwdrep">{{ form.repeat_password.label }}    {{ form.repeat_password }}</div>#}
-{#            <div class="signupname">{{ form.name.label }}   {{ form.name }}</div>#}
-{#            <div class="signupid">{{ form.id_card.label }}    {{ form.id_card }}</div>#}
-{#            <div class="signupphone">{{ form.phone_number.label }}   {{ form.phone_number }}</div>#}
             <input type="submit" value="注册" onclick="return check()">
         </form>
     </div>
 </div>
-  </div>
+
+</div>
+
+
+
+
+
 <script>
     var aCity={11:"北京",12:"天津",13:"河北",14:"山西",15:"内蒙古",
             21:"辽宁",22:"吉林",23:"黑龙江",31:"上海",32:"江苏",33:"浙江",
@@ -105,23 +118,23 @@
             return false;
         }
         if(!/^\d{17}(\d|x)$/i.test(sId)){
-            alert('你输入的身份证长度或格式错误1');
+            alert('你输入的身份证长度或格式错误');
             return false;
         }
         sId=sId.replace(/x$/i,"a");
         if(aCity[parseInt(sId.substr(0,2))]==null){
-            alert('你输入的身份证长度或格式错误2');
+            alert('你输入的身份证长度或格式错误');
             return false;
         }
         sBirthday=sId.substr(6,4)+"-"+Number(sId.substr(10,2))+"-"+Number(sId.substr(12,2));
         var d=new Date(sBirthday.replace(/-/g,"/")) ;
         if(sBirthday!=(d.getFullYear()+"-"+ (d.getMonth()+1) + "-" + d.getDate())){
-            alert('你输入的身份证长度或格式错误3');
+            alert('你输入的身份证长度或格式错误');
             return false;
         }
         for(var i = 17;i>=0;i --) iSum += (Math.pow(2,i) % 11) * parseInt(sId.charAt(17 - i),11) ;
         if(iSum%11!=1){
-            alert('你输入的身份证长度或格式错误4');
+            alert('你输入的身份证长度或格式错误');
             return false;
         }
         //aCity[parseInt(sId.substr(0,2))]+","+sBirthday+","+(sId.substr(16,1)%2?"男":"女");//此次还可以判断出输入的身份证号的人性别
