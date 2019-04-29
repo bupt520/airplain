@@ -65,6 +65,9 @@
 {#                <td> <a methods="put" href="{{ url_for('admin.company', company_name=item.En_name) }}"><span>修改</span></a> </td>#}
                 </tr>
             {% endfor %}
+        {% for msg in get_flashed_messages()  %}
+        <p style="color: #cd0a0a">{{ msg }}</p>
+        {% endfor %}
 
         </table>
     </div>

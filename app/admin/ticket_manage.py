@@ -3,7 +3,7 @@
 # Name:         ticket_manage
 # Date:         2019/4/12
 # -------------------------------------------------------------------------------
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash
 
 from app.data.admin import CompanyInfo
 from app.data.order import ManageOrder
@@ -39,6 +39,10 @@ def change_company(company_name):
     form = AddCompanyForm(request.form)
     com=Company.query.filter_by(En_name=company_name).first()
     # if request.method == 'POST':  # and form.validate():
+
+    if Ticket.query.filter_by(company_name=com.company_name).first():
+        flash("WARNING!  该公司有关联的机票或订单，不能删除")
+        return redirect(url_for('admin.company'))
     with db.auto_commit():
         db.session.delete(com)
     return redirect(url_for('admin.company'))
