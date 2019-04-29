@@ -5,7 +5,7 @@
     Description :
 """
 
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash, app
 from flask_login import login_user, logout_user, current_user, login_required
 
 from app.forms.auth import RegisterForm, LoginForm, ChangeInfoForm
@@ -33,6 +33,11 @@ def login():
     if request.method == 'POST' and form.validate():
         user = User.query.filter_by(nickname=form.nickname.data).first()
         if user and user.check_passward(form.password.data):
+            from flask import session
+            from datetime import timedelta
+
+            session.permanent = True
+            app.permanent_session_lifetime = timedelta(minutes=30)
             login_user(user, remember=True)
             next = request.args.get('next')
             print(next)

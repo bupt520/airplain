@@ -4,6 +4,7 @@
 # Date:         2019/4/11
 # -------------------------------------------------------------------------------
 from flask import render_template, request, redirect, url_for
+from werkzeug.security import generate_password_hash
 
 from app.data.admin import AdminInfo
 from app.forms.admin import AddAdminForm
@@ -16,6 +17,7 @@ from . import admin
 # 大多数函数的作用大部分都在函数名中体现了。get方法是获取登录页面，post方法如果登陆成功是返回管理员管理。
 @admin.route('/admin/login', methods=['GET', 'POST'])
 def login():
+
     form = LoginForm(request.form)
     if request.method == 'POST':  # and form.validate():
         ad = Admin.query.filter_by(nickname=form.nickname.data).first()
@@ -40,8 +42,9 @@ def add_admin():
     if request.method == 'POST':  # and form.validate():
         with db.auto_commit():
             ad = Admin()
-            ad.set_attrs(form.data)
-            ad.role="super"
+            ad.nickname = form.nickname.data
+            ad.role = 'super'
+            ad.password = generate_password_hash(form.password.data)
             # user=user.create_user(form)
             db.session.add(ad)
             return redirect(url_for('admin.admin_manage'))
