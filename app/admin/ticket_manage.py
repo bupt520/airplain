@@ -37,7 +37,7 @@ def company():
 @admin.route('/admin/company/<company_name>', methods=['GET', 'POST'])
 def change_company(company_name):
     form = AddCompanyForm(request.form)
-    com=Company.query.filter_by(company_name=company_name).first()
+    com=Company.query.filter_by(En_name=company_name).first()
     # if request.method == 'POST':  # and form.validate():
     with db.auto_commit():
         db.session.delete(com)
