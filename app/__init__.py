@@ -3,7 +3,7 @@
 # Name:         __init__.py
 # Date:         2019/4/9
 # -------------------------------------------------------------------------------
-from flask import Flask
+from flask import Flask, url_for
 from flask_login import LoginManager
 from flask_mail import Mail
 from werkzeug.security import generate_password_hash
@@ -45,8 +45,12 @@ def create_app():
     return app
 
 
+
+
 def register_blueprint(app):
     from app.web import web
     from app.admin import admin
     app.register_blueprint(admin)
     app.register_blueprint(web)
+
+
